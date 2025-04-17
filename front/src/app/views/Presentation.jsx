@@ -24,8 +24,8 @@ const Presentation = () => {
        
        {/* Contenedor de texto */}
        <div className="w-full md:w-1/2">
-         <h1 className="text-4xl font-bold text-[#3a4a3c] mb-4">Gianluca Developer</h1>
-         <h2 className="text-2xl text-[#3a4a3c] mb-6">Frontend Developer</h2>
+         <h1 className="text-4xl font-bold text-[#3a4a3c] mb-4">Gian Luca (Blake) Caravone </h1>
+         <h2 className="text-2xl text-[#3a4a3c] mb-6">Full Stack Developer (Specialized in Frontend)</h2>
          <p className="text-[#3a4a3c] mb-6">
            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.
          </p>

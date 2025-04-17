@@ -1,7 +1,7 @@
-import Presentation from "./components/presentation/Presentation";
-import Proyects from "./components/proyects/Proyects";
-import Skills from "./components/skills/Skills";
-import Certificates from "./components/certificates/Certificates";
+import Presentation from "./views/Presentation";
+import Proyects from "./views/Proyects";
+import Skills from "./views/Skills";
+import Certificates from "./views/Certificates";
 import Contact from "./components/contact/FormContact";
 
 export default function Home() {
