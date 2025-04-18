@@ -21,7 +21,7 @@ const certificates = [
     id: 3,
     title: "Graduado en Economía",
     description: "Complejo Educativo Solis",
-    image: "/placeholder-certificate.jpg", 
+    image: "/Certificado de graduacion.jpg", 
     date: "2019"
   }
 ];
