@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { slideFromRight } from '@/utilities/animation';
 
 const certificates = [
   {
@@ -31,11 +33,17 @@ export default function Certificados() {
     <section className="py-12 px-4 md:px-8 bg-white dark:bg-gray-900">
       <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">Certificados</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {certificates.map((cert) => (
-          <div
-            key={cert.id}
-            className="bg-gray-100 dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition-transform transform hover:scale-105"
-          >
+        {certificates.map((cert, index) => (
+          <motion.div
+          key={cert.id}
+          className="bg-gray-100 dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition-transform transform hover:scale-105"
+          variants={slideFromRight}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false }} // Esto asegura que la animación se ejecute cada vez que se vea
+          transition={{ delay: 0.4 + index * 0.3 }} // más diferencia entre uno y otro
+        >
+        
             <div className="relative w-full h-64">
               <Image
                 src={cert.image}
@@ -51,7 +59,7 @@ export default function Certificados() {
               <p className="text-gray-600 dark:text-gray-300">{cert.description}</p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Año: {cert.date}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

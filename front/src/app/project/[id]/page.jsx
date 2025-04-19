@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { projects } from '@/app/helpers/Projects'
+import { projects } from '@/helpers/Projects'
 
 const ProjectDetail = ({ params }) => {
   const proyecto = projects.find(p => p.id === params.id)

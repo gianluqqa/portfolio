@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { slideFromTop } from "@/utilities/animation"; // Asegurate que este esté bien exportado
+import { slideFromTop } from "@/utilities/animation";
 
 const photoProfile = "/Foto de perfil.jpg";
 
@@ -15,7 +15,8 @@ const Presentation = () => {
           className="w-full md:w-1/2 flex justify-center -mt-[35px]"
           variants={slideFromTop}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: false }}
           transition={{ delay: 1.5 }}
         >
           <div className="relative w-80 h-80 rounded-lg overflow-hidden border-4 border-[#3a4a3c]">
@@ -35,8 +36,9 @@ const Presentation = () => {
             className="text-4xl font-bold text-[#3a4a3c] mb-4"
             variants={slideFromTop}
             initial="hidden"
-            animate="show"
-            transition={{ delay: 3.0 }}
+            whileInView="show"
+            viewport={{ once: false }}
+            transition={{ delay: 0.9 }}
           >
             Gian Luca (Blake) Caravone
           </motion.h1>
@@ -45,7 +47,8 @@ const Presentation = () => {
             className="text-2xl text-[#3a4a3c] mb-6"
             variants={slideFromTop}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: false }}
             transition={{ delay: 0.9 }}
           >
             Full Stack Developer (Specialized in Frontend)
@@ -55,8 +58,9 @@ const Presentation = () => {
             className="text-[#3a4a3c] mb-6"
             variants={slideFromTop}
             initial="hidden"
-            animate="show"
-            transition={{ delay: 1.5 }}
+            whileInView="show"
+            viewport={{ once: false }}
+            transition={{ delay: 0.9 }}
           >
             Full Stack Developer specialized in Front-End, with experience
             building interactive web applications using React, Next.js, Node.js,
@@ -73,8 +77,9 @@ const Presentation = () => {
             className="bg-[#3a4a3c] text-[#f0e6a3] px-6 py-2 rounded-md hover:bg-opacity-90 transition-all"
             variants={slideFromTop}
             initial="hidden"
-            animate="show"
-            transition={{ delay: 2.0 }}
+            whileInView="show"
+            viewport={{ once: false }}
+            transition={{ delay: 0.9 }}
           >
             Download CV
           </motion.button>

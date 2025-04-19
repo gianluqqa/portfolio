@@ -1,8 +1,11 @@
+'use client';
+
 import React from "react";
 import Image from "next/image"; 
+import { slideFromBottom } from "@/utilities/animation";
+import { motion } from "framer-motion";
 
 const Skills = () => {
-  // Datos de las tecnologías organizados por categorías
   const skillsData = {
     frontend: [
       { name: "HTML", logo: "/HTML - logo.png" },
@@ -49,13 +52,19 @@ const Skills = () => {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {skillsData[category.id].map((tech, index) => (
-                <div 
-                  key={index} 
-                  className="bg-[#f7f1cf] rounded-lg shadow-md p-4 flex flex-col items-center justify-center
-                           border-2 border-[#4a5d4c] transition-all duration-300 
-                           hover:bg-[#3a4a3c] hover:shadow-lg hover:-translate-y-1 hover:border-[#f7f1cf] 
-                           group cursor-pointer"
-                >
+                <motion.div
+                key={index}
+                className="bg-[#f7f1cf] rounded-lg shadow-md p-4 flex flex-col items-center justify-center
+                         border-2 border-[#4a5d4c] transition-all duration-300 
+                         hover:bg-[#3a4a3c] hover:shadow-lg hover:-translate-y-1 hover:border-[#f7f1cf] 
+                         group cursor-pointer"
+                variants={slideFromBottom}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false }} // Permite la animación cada vez que el componente entre en vista
+                transition={{ delay: index * 0.1 }}
+              >
+              
                   <div className="w-16 h-16 relative mb-3 bg-white rounded-full p-2 flex items-center justify-center
                                 group-hover:bg-[#f7f1cf] transition-all duration-300">
                     <Image 
@@ -69,7 +78,7 @@ const Skills = () => {
                   <span className="font-medium text-[#3a4a3c] group-hover:text-[#f7f1cf] transition-colors duration-300">
                     {tech.name}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
