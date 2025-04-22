@@ -3,23 +3,35 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { slideFromTop } from "@/utilities/animation";
+import Button from "@/components/ui/Button"; // Asegúrate de que la ruta sea correcta
 
 const photoProfile = "/Foto de perfil.jpg";
+const background = "/Background.png";
 
 const Presentation = () => {
   return (
-    <div className="bg-[#f0e6a3] min-h-screen flex items-center justify-center py-16">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12 w-3/4">
+    <div className="relative min-h-screen w-full flex items-center justify-center py-16 px-4">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src={background}
+          alt="Background"
+          fill
+          style={{ objectFit: "cover" }}
+          priority
+        />
+      </div>
+
+      <div className="w-full max-w-screen-xl flex flex-col md:flex-row items-center justify-between gap-12">
         {/* FOTO */}
         <motion.div
-          className="w-full md:w-1/2 flex justify-center -mt-[35px]"
+          className="w-full md:w-1/2 flex justify-center"
           variants={slideFromTop}
           initial="hidden"
           whileInView="show"
           viewport={{ once: false }}
           transition={{ delay: 1.5 }}
         >
-          <div className="relative w-80 h-80 rounded-lg overflow-hidden border-4 border-[#3a4a3c]">
+          <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-xl overflow-hidden border-4 border-red-500 shadow-lg">
             <Image
               src={photoProfile}
               alt="Foto de perfil de Gian Luca Caravone"
@@ -31,9 +43,9 @@ const Presentation = () => {
         </motion.div>
 
         {/* TEXTO */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 text-center md:text-left space-y-6 px-2">
           <motion.h1
-            className="text-4xl font-bold text-[#3a4a3c] mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-500"
             variants={slideFromTop}
             initial="hidden"
             whileInView="show"
@@ -44,7 +56,7 @@ const Presentation = () => {
           </motion.h1>
 
           <motion.h2
-            className="text-2xl text-[#3a4a3c] mb-6"
+            className="text-lg sm:text-xl md:text-2xl text-orange-300"
             variants={slideFromTop}
             initial="hidden"
             whileInView="show"
@@ -55,7 +67,7 @@ const Presentation = () => {
           </motion.h2>
 
           <motion.p
-            className="text-[#3a4a3c] mb-6"
+            className="text-green-500 text-sm sm:text-base leading-relaxed sm:leading-loose"
             variants={slideFromTop}
             initial="hidden"
             whileInView="show"
@@ -73,16 +85,18 @@ const Presentation = () => {
             project success.
           </motion.p>
 
-          <motion.button
-            className="bg-[#3a4a3c] text-[#f0e6a3] px-6 py-2 rounded-md hover:bg-opacity-90 transition-all"
+          <motion.div
             variants={slideFromTop}
             initial="hidden"
             whileInView="show"
             viewport={{ once: false }}
             transition={{ delay: 0.9 }}
           >
-            Download CV
-          </motion.button>
+            {/* Reemplaza el botón existente con tu componente Button */}
+            <Button className="bg-red-500 hover:bg-red-600 text-white">
+              Download CV
+            </Button>
+          </motion.div>
         </div>
       </div>
     </div>

@@ -67,7 +67,7 @@ const Contact = () => {
                  
                  {/* LinkedIn */}
                  <a 
-                   href="https://www.linkedin.com/in/yourprofile" 
+                   href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="bg-[#f0e6a3] text-[#3a4a3c] p-2 rounded-full hover:bg-opacity-80 transition-all"
@@ -79,7 +79,7 @@ const Contact = () => {
                  
                  {/* GitHub */}
                  <a 
-                   href="https://github.com/yourusername" 
+                   href="https://github.com/gianluqqa" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="bg-[#f0e6a3] text-[#3a4a3c] p-2 rounded-full hover:bg-opacity-80 transition-all"

@@ -1,37 +1,13 @@
 "use client"
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
 
 const Navbar = () => {
   const { scrollY } = useScroll();
   
-  // Transformación para la opacidad del fondo
-  const bgOpacity = useTransform(
-    scrollY,
-    [0, 100],
-    [0, 1]
-  );
-  
-  // Transformación para la altura
-  const navHeight = useTransform(
-    scrollY,
-    [0, 100],
-    ['4rem', '3rem']
-  );
-  
-  // Transformación para los colores del texto
-  // Invertimos colores: oscuros al inicio, claros al hacer scroll
-  const textColor = useTransform(
-    scrollY,
-    [0, 100],
-    ["#3a4a3c", "#f0e6a3"]
-  );
-  
-  const hoverTextColor = useTransform(
-    scrollY,
-    [0, 100],
-    ["#2a3a2c", "#f8f0c8"]
-  );
+  const bgOpacity = useTransform(scrollY, [0, 100], [0, 1]);
+  const navHeight = useTransform(scrollY, [0, 100], ['4rem', '3rem']);
 
   return (
     <motion.nav
@@ -40,60 +16,59 @@ const Navbar = () => {
     >
       {/* Fondo con opacidad variable */}
       <motion.div 
-        className="absolute inset-0 bg-[#3a4a3c]"
+        className="absolute inset-0 bg-gray-800"
         style={{ opacity: bgOpacity }}
       />
-      
-      {/* Contenido de la navbar siempre visible */}
+
+      {/* Contenido de la navbar */}
       <div className="container mx-auto px-4 h-full relative">
         <div className="flex justify-between items-center h-full">
-          <motion.div className="font-bold text-xl" style={{ color: textColor }}>
+
+          {/* Izquierda: Nombre */}
+          <motion.div className="font-bold text-xl text-green-500">
             Gian Luca Caravone
           </motion.div>
-          
-          <div className="hidden md:flex space-x-8">
+
+          {/* Centro: Títulos */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-8">
             <motion.a 
               href="#about" 
-              className="font-medium transition-colors duration-300"
-              style={{ color: textColor }}
-              whileHover={{ color: hoverTextColor }}
+              className="font-medium transition-colors duration-300 text-green-500 hover:text-red-500"
             >
               About Me
             </motion.a>
             <motion.a 
               href="#projects" 
-              className="font-medium transition-colors duration-300"
-              style={{ color: textColor }}
-              whileHover={{ color: hoverTextColor }}
+              className="font-medium transition-colors duration-300 text-green-500 hover:text-red-500"
             >
               Projects
             </motion.a>
             <motion.a 
               href="#skills" 
-              className="font-medium transition-colors duration-300"
-              style={{ color: textColor }}
-              whileHover={{ color: hoverTextColor }}
+              className="font-medium transition-colors duration-300 text-green-500 hover:text-red-500"
             >
               Skills
             </motion.a>
             <motion.a 
               href="#contact" 
-              className="font-medium transition-colors duration-300"
-              style={{ color: textColor }}
-              whileHover={{ color: hoverTextColor }}
+              className="font-medium transition-colors duration-300 text-green-500 hover:text-red-500"
             >
               Contact
             </motion.a>
           </div>
-          
-          {/* Menú móvil (hamburguesa) */}
-          <motion.div className="md:hidden" style={{ color: textColor }}>
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </motion.div>
+
+          {/* Derecha: Redes sociales */}
+          <div className="hidden md:flex space-x-4 text-green-500">
+            <a href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin size={20} />
+            </a>
+            <a href="https://wa.me/5493412149033" target="_blank" rel="noopener noreferrer">
+              <FaWhatsapp size={20} />
+            </a>
+            <a href="https://github.com/gianluqqa" target="_blank" rel="noopener noreferrer">
+              <FaGithub size={20} />
+            </a>
+          </div>
         </div>
       </div>
     </motion.nav>

@@ -2,12 +2,12 @@ import React from 'react'
 
 const Footer = () => {
  return (
-   <footer className="bg-[#3a4a3c] text-[#f0e6a3] py-6">
+   <footer className="bg-gray-800 text-[#f0e6a3] py-6">
      <div className="container mx-auto px-4">
        <div className="flex flex-col md:flex-row justify-between items-center">
          <div className="mb-4 md:mb-0">
-           <p className="text-lg font-bold">Gian Luca (Blake) Caravone</p>
-           <p className="text-sm">Frontend Developer</p>
+           <p className="text-lg font-bold text-[#f8a62f]">Gian Luca (Blake) Caravone</p>
+           <p className="text-sm text-[#4dbf76]">Frontend Developer</p>
          </div>
          
          <div className="flex space-x-4">
@@ -29,11 +29,11 @@ const Footer = () => {
          </div>
        </div>
 
-       <hr className="my-5 border-[#f0e6a3] opacity-30" />
+       <hr className="my-5 border-[#4dbf76] opacity-30" /> 
 
        <div className="flex flex-col md:flex-row justify-between items-center">
-         <p className="text-sm mb-2 md:mb-0">© 2025 Gian Luca Caravone (Blake) Portfolio. All rights reserved.</p>
-         <p className="text-sm">Made with Next.js and Tailwind CSS</p>
+         <p className="text-sm mb-2 md:mb-0 text-[#f8a62f]">© 2025 Gian Luca Caravone (Blake) Portfolio. All rights reserved.</p> 
+         <p className="text-sm text-[#4dbf76]">Made with Next.js and Tailwind CSS</p> 
        </div>
      </div>
    </footer>
