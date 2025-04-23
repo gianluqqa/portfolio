@@ -93,8 +93,8 @@ const Presentation = () => {
             transition={{ delay: 0.9 }}
           >
             {/* Reemplaza el botón existente con tu componente Button */}
-            <Button className="bg-red-500 hover:bg-red-600 text-white">
-              Download CV
+            <Button>
+              Dowdland Resume
             </Button>
           </motion.div>
         </div>

@@ -41,7 +41,7 @@ const Skills = () => {
   return (
     <div className="bg-white dark:bg-gray-900 py-16" id="skills">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-12">
+        <h2 className="text-4xl font-bold text-center text-red-500 mb-12">
           Skills
         </h2>
 

@@ -31,7 +31,7 @@ const certificates = [
 export default function Certificados() {
   return (
     <section className="py-12 px-4 sm:px-6 md:px-8 lg:px-16 bg-gradient-to-br from-red-100 via-green-100 to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-red-600 dark:text-red-400">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-red-500 dark:text-red-500">
         Certificados
       </h2>
 

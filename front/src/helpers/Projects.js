@@ -2,23 +2,23 @@ export const projects = [
     {
       id: '1',
       titulo: 'Portfolio Web',
-      descripcion: 'Mi portfolio personal desarrollado con Next.js',
+      descripcion: "Lorem",
       tecnologias: ['React', 'Next.js', 'Tailwind'],
-      imagen: '/images/portfolio.png'
+      imagen: '/Logo.png'
     },
     {
       id: '2',
       titulo: 'E-commerce App',
       descripcion: 'Aplicación de compras en línea',
       tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
+      imagen: '/Logo.png'
     },
     {
       id: '3',
       titulo: 'E-commerce App',
       descripcion: 'Aplicación de compras en línea',
       tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
+      imagen: '/Logo.png'
     },
     {
       id: '4',
