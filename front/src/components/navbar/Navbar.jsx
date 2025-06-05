@@ -75,21 +75,21 @@ const Navbar = () => {
           {/* Derecha: Redes sociales - Oculto en móvil, visible en desktop */}
           <div className="hidden md:flex space-x-4 text-green-500">
             <a
-              href="https://linkedin.com/in/tuusuario"
+              href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaLinkedin size={18} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
             </a>
             <a
-              href="https://wa.me/tu_numero"
+              href="https://wa.me/5493412149033"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaWhatsapp size={18} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
             </a>
             <a
-              href="https://github.com/tuusuario"
+              href="https://github.com/gianluqqa"
               target="_blank"
               rel="noopener noreferrer"
             >

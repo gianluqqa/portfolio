@@ -1,10 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
-import { projects } from '../helpers/projects'
+import { projects } from '@/helpers/Projects'
 
 const Projects = () => {
   return (
-    <div className="min-h-screen py-10 px-6 bg-gradient-to-br from-red-100 via-green-100 to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
+    <section id="projects" className="min-h-screen py-10 px-6 bg-gradient-to-br from-red-100 via-green-100 to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 scroll-mt-24">
       <h1 className="text-4xl font-bold text-center mb-10 text-red-500">Mis Proyectos</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -17,7 +17,7 @@ const Projects = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -1,87 +1,24 @@
 export const projects = [
-    {
-      id: '1',
-      titulo: 'Portfolio Web',
-      descripcion: "Lorem",
-      tecnologias: ['React', 'Next.js', 'Tailwind'],
-      imagen: '/Logo.png'
-    },
-    {
-      id: '2',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/Logo.png'
-    },
-    {
-      id: '3',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/Logo.png'
-    },
-    {
-      id: '4',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '5',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '6',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '7',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '8',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '9',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '10',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '11',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    },
-    {
-      id: '12',
-      titulo: 'E-commerce App',
-      descripcion: 'Aplicación de compras en línea',
-      tecnologias: ['React', 'Redux', 'Firebase'],
-      imagen: '/images/ecommerce.png'
-    }
-  ];
-  
+  {
+    id: "1",
+    titulo: "Luxora - Ecommerce de Muebles de Alta Gama",
+    descripcion:
+      "Luxora es una plataforma ecommerce de muebles de alta gama que ofrece una experiencia premium tanto para clientes como para administradores. Permite explorar productos sin registro, gestionar compras y suscripciones, y acceder a dashboards personalizados. Incluye autenticación con Firebase, pasarela de pagos simulada, estadísticas en tiempo real y un completo panel de administración.",
+    tecnologias: [
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Firebase",
+      "PostgreSQL",
+      "MongoDB",
+    ],
+    imagen: [
+      "/Luxora1.png",
+      "/Luxora2.png",
+      "/Luxora3.png",
+      "/Luxora4.png",
+      "/Luxora5.png",
+      "/Luxora6.png",
+    ],
+  },
+];

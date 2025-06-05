@@ -10,7 +10,7 @@ const background = "/Background.png";
 
 const Presentation = () => {
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center py-16 px-4">
+    <section id="about" className="relative min-h-screen w-full flex items-center justify-center py-16 px-4">
       <div className="absolute inset-0 -z-10">
         <Image
           src={background}
@@ -99,7 +99,7 @@ const Presentation = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

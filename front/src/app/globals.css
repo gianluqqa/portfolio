@@ -25,3 +25,6 @@ body {
   font-family: var(--font-vt323), var(--font-markazi), serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}

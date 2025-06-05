@@ -39,7 +39,7 @@ const Skills = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-900 py-16" id="skills">
+    <section className="bg-white dark:bg-gray-900 py-16" id="skills">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-red-500 mb-12">
           Skills
@@ -81,7 +81,7 @@ const Skills = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
