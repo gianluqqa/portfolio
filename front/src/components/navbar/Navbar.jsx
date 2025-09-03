@@ -46,7 +46,7 @@ const Navbar = () => {
             {/* Enlaces de navegación - solo visibles en desktop */}
             <div className="hidden md:flex space-x-4 lg:space-x-8">
               <motion.a
-                href="#about"
+                href="#presentation"
                 className="font-medium text-sm sm:text-base transition-colors duration-300 text-green-500 hover:text-red-500"
               >
                 About Me
