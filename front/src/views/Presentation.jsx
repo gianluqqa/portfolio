@@ -7,7 +7,7 @@ const photoProfile = "/Foto de perfil.jpg";
 
 const Presentation = () => {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const [currentTime, setCurrentTime] = useState('');
+  const [currentTime, setCurrentTime] = useState("");
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showComponents, setShowComponents] = useState({
@@ -16,7 +16,7 @@ const Presentation = () => {
     name: false,
     title: false,
     description: false,
-    button: false
+    button: false,
   });
 
   useEffect(() => {
@@ -29,18 +29,18 @@ const Presentation = () => {
 
     const updateTime = () => {
       const now = new Date();
-      setCurrentTime(now.toLocaleTimeString('en-US', { hour12: false }));
+      setCurrentTime(now.toLocaleTimeString("en-US", { hour12: false }));
     };
 
     handleResize();
     updateTime();
-    
-    window.addEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
     const timeInterval = setInterval(updateTime, 1000);
 
     // Loading simulation
     const loadingInterval = setInterval(() => {
-      setLoadingProgress(prev => {
+      setLoadingProgress((prev) => {
         if (prev >= 100) {
           clearInterval(loadingInterval);
           setTimeout(() => setIsLoaded(true), 500);
@@ -51,7 +51,7 @@ const Presentation = () => {
     }, 150);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       clearInterval(timeInterval);
       clearInterval(loadingInterval);
     };
@@ -61,17 +61,17 @@ const Presentation = () => {
   useEffect(() => {
     if (isLoaded) {
       const delays = [
-        { key: 'header', delay: 200 },
-        { key: 'image', delay: 800 },
-        { key: 'name', delay: 1400 },
-        { key: 'title', delay: 2000 },
-        { key: 'description', delay: 2600 },
-        { key: 'button', delay: 3200 }
+        { key: "header", delay: 200 },
+        { key: "image", delay: 800 },
+        { key: "name", delay: 1400 },
+        { key: "title", delay: 2000 },
+        { key: "description", delay: 2600 },
+        { key: "button", delay: 3200 },
       ];
 
       delays.forEach(({ key, delay }) => {
         setTimeout(() => {
-          setShowComponents(prev => ({ ...prev, [key]: true }));
+          setShowComponents((prev) => ({ ...prev, [key]: true }));
         }, delay);
       });
     }
@@ -82,14 +82,14 @@ const Presentation = () => {
       {/* ASCII Art Logo */}
       <motion.div
         className="text-center font-mono text-green-400 text-xl md:text-2xl"
-        style={{ textShadow: '0 0 20px #00ff41' }}
+        style={{ textShadow: "0 0 20px #00ff41" }}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
       >
         <div>╔══════════════════════════════════╗</div>
-        <div>║     DEVELOPER  PROFILE  V2.0     ║</div>
-        <div>║          LOADING SYSTEM          ║</div>
+        <div>║ DEVELOPER PROFILE V2.0 ║</div>
+        <div>║ LOADING SYSTEM ║</div>
         <div>╚══════════════════════════════════╝</div>
       </motion.div>
 
@@ -110,8 +110,12 @@ const Presentation = () => {
           transition={{ duration: 1, repeat: Infinity }}
         >
           {loadingProgress < 30 && "► Initializing neural networks..."}
-          {loadingProgress >= 30 && loadingProgress < 60 && "► Decrypting skill databases..."}
-          {loadingProgress >= 60 && loadingProgress < 90 && "► Compiling experience data..."}
+          {loadingProgress >= 30 &&
+            loadingProgress < 60 &&
+            "► Decrypting skill databases..."}
+          {loadingProgress >= 60 &&
+            loadingProgress < 90 &&
+            "► Compiling experience data..."}
           {loadingProgress >= 90 && "► Profile ready for deployment..."}
         </motion.div>
       </motion.div>
@@ -127,7 +131,7 @@ const Presentation = () => {
             className="h-full bg-gradient-to-r from-green-400 via-cyan-400 to-magenta-400 rounded-full"
             style={{
               width: `${Math.min(loadingProgress, 100)}%`,
-              boxShadow: '0 0 20px rgba(0, 255, 65, 0.8)'
+              boxShadow: "0 0 20px rgba(0, 255, 65, 0.8)",
             }}
             transition={{ duration: 0.3 }}
           />
@@ -145,39 +149,47 @@ const Presentation = () => {
     </div>
   );
 
-  const DecodingText = ({ children, show, delay = 0, className = "", style = {} }) => {
-    const [displayText, setDisplayText] = useState('');
+  const DecodingText = ({
+    children,
+    show,
+    delay = 0,
+    className = "",
+    style = {},
+  }) => {
+    const [displayText, setDisplayText] = useState("");
     const [isDecoding, setIsDecoding] = useState(false);
     const [hasStarted, setHasStarted] = useState(false);
-    const text = typeof children === 'string' ? children : '';
-    
+    const text = typeof children === "string" ? children : "";
+
     useEffect(() => {
       if (!show || !text || hasStarted) return;
-      
+
       setHasStarted(true);
-      const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      
+      const chars =
+        "!@#$%^&*()_+-=[]{}|;:,.<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
       const startDecoding = () => {
         setIsDecoding(true);
         let currentIndex = 0;
-        
+
         const interval = setInterval(() => {
           if (currentIndex <= text.length) {
             const decoded = text.slice(0, currentIndex);
             const remaining = text.slice(currentIndex);
-            
+
             // Scramble only the next few characters that are being "decoded"
             const scrambleLength = Math.min(3, remaining.length);
-            const scrambled = remaining.slice(0, scrambleLength)
-              .split('')
+            const scrambled = remaining
+              .slice(0, scrambleLength)
+              .split("")
               .map(() => chars[Math.floor(Math.random() * chars.length)])
-              .join('');
-            
+              .join("");
+
             const unprocessed = remaining.slice(scrambleLength);
             setDisplayText(decoded + scrambled + unprocessed);
-            
+
             currentIndex++;
-            
+
             // When fully decoded, set final text and stop
             if (currentIndex > text.length) {
               setDisplayText(text);
@@ -204,7 +216,7 @@ const Presentation = () => {
 
     return (
       <div className={className} style={style}>
-        {typeof children === 'string' ? displayText || text : children}
+        {typeof children === "string" ? displayText || text : children}
         {isDecoding && (
           <motion.span
             className="text-cyan-400"
@@ -220,21 +232,19 @@ const Presentation = () => {
 
   if (!isLoaded) {
     return (
-      <section 
-        className="relative min-h-screen w-full overflow-hidden bg-gray-900"
-      >
+      <section className="relative min-h-screen w-full overflow-hidden bg-gray-900">
         {/* Terminal grid background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-900 to-black opacity-90"></div>
-          <div 
+          <div
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: `
                 linear-gradient(rgba(34, 197, 94, 0.3) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(34, 197, 94, 0.3) 1px, transparent 1px)
               `,
-              backgroundSize: '40px 40px',
-              animation: 'terminal-grid 15s linear infinite'
+              backgroundSize: "40px 40px",
+              animation: "terminal-grid 15s linear infinite",
             }}
           ></div>
         </div>
@@ -244,19 +254,22 @@ const Presentation = () => {
   }
 
   return (
-    <section className="relative bg-gray-900 overflow-hidden py-16" id="presentation">
+    <section
+      className="relative bg-gray-900 overflow-hidden py-16"
+      id="presentation"
+    >
       {/* Terminal grid background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-900 to-black opacity-90"></div>
-        <div 
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
               linear-gradient(rgba(34, 197, 94, 0.3) 1px, transparent 1px),
               linear-gradient(90deg, rgba(34, 197, 94, 0.3) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px',
-            animation: 'terminal-grid 15s linear infinite'
+            backgroundSize: "40px 40px",
+            animation: "terminal-grid 15s linear infinite",
           }}
         ></div>
       </div>
@@ -293,20 +306,21 @@ const Presentation = () => {
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-yellow-500 opacity-70"></div>
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-500 opacity-70"></div>
                   </div>
-                  <DecodingText 
-                    show={showComponents.header} 
+                  <DecodingText
+                    show={showComponents.header}
                     className="text-green-400 text-sm"
                   >
                     ~/portfolio/developer$ cat profile.txt
                   </DecodingText>
                   <div className="text-cyan-400 text-sm">{currentTime}</div>
                 </div>
-                <DecodingText 
-                  show={showComponents.header} 
+                <DecodingText
+                  show={showComponents.header}
                   className="text-green-400 text-sm"
                   delay={500}
                 >
-                  <span className="text-magenta-400">SYSTEM:</span> Profile loaded successfully ✓
+                  <span className="text-magenta-400">SYSTEM:</span> Profile
+                  loaded successfully ✓
                 </DecodingText>
               </div>
             </motion.div>
@@ -337,7 +351,7 @@ const Presentation = () => {
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-b overflow-hidden bg-gray-800 border-2 border-green-400/50">
                     <Image
                       src={photoProfile}
@@ -347,7 +361,7 @@ const Presentation = () => {
                       priority
                       className="filter contrast-110 brightness-110"
                     />
-                    
+
                     {/* Scan line effect */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="h-0.5 w-full bg-green-400 animate-pulse absolute top-1/2 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
@@ -405,7 +419,7 @@ const Presentation = () => {
                   </DecodingText>
 
                   <div className="flex justify-center">
-                    <motion.div 
+                    <motion.div
                       className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm font-mono border-yellow-400/50 text-yellow-400 bg-gray-700"
                       animate={{ opacity: [1, 0.7, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
@@ -451,7 +465,7 @@ const Presentation = () => {
                     "█ I thrive in agile environments (Scrum), contributing with",
                     "█ clear communication and collaborative teamwork. I stand",
                     "█ out for my proactive mindset, adaptability, and focus on",
-                    "█ quality, ensuring project success and scalability."
+                    "█ quality, ensuring project success and scalability.",
                   ].map((line, index) => (
                     <DecodingText
                       key={index}
@@ -486,7 +500,7 @@ const Presentation = () => {
                     <div className="text-cyan-400 text-sm mb-2 opacity-70">
                       ~/profile$ ./download_resume
                     </div>
-                    <DecodingText 
+                    <DecodingText
                       show={showComponents.button}
                       className="text-cyan-400 font-mono font-bold text-sm md:text-base"
                     >
@@ -500,13 +514,6 @@ const Presentation = () => {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
-        
-        {/* Terminal footer */}
-        <div className="mt-16 text-center text-green-400 text-sm opacity-70">
-          <div className="animate-pulse">
-            developer@portfolio:~$ █
-          </div>
         </div>
       </div>
 

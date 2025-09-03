@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useRef } from "react";
 
 const Contact = () => {
@@ -7,15 +7,15 @@ const Contact = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    
+
+    const ctx = canvas.getContext("2d");
+
     const updateCanvasSize = () => {
       const section = canvas.parentElement;
       canvas.width = section.offsetWidth;
       canvas.height = section.offsetHeight;
     };
-    
+
     updateCanvasSize();
 
     const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
@@ -30,14 +30,15 @@ const Contact = () => {
     }
 
     function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+      ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#00ff41';
-      ctx.font = font_size + 'px monospace';
+      ctx.fillStyle = "#00ff41";
+      ctx.font = font_size + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
-        const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+        const text =
+          matrixArray[Math.floor(Math.random() * matrixArray.length)];
         ctx.fillText(text, i * font_size, drops[i] * font_size);
 
         if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
@@ -53,11 +54,11 @@ const Contact = () => {
       updateCanvasSize();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -113,27 +114,30 @@ const Contact = () => {
           z-index: 2;
         }
       `}</style>
-      
-      <section className="relative bg-gray-900 overflow-hidden py-16" id="contact">
+
+      <section
+        className="relative bg-gray-900 overflow-hidden py-16"
+        id="contact"
+      >
         {/* Terminal grid background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-900 to-black opacity-90"></div>
-          <div 
+          <div
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: `
                 linear-gradient(rgba(34, 197, 94, 0.3) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(34, 197, 94, 0.3) 1px, transparent 1px)
               `,
-              backgroundSize: '40px 40px',
-              animation: 'terminal-grid 15s linear infinite'
+              backgroundSize: "40px 40px",
+              animation: "terminal-grid 15s linear infinite",
             }}
           ></div>
         </div>
 
         {/* Matrix Background - Solo en esta section */}
         <canvas ref={canvasRef} className="matrix-bg" />
-        
+
         <div className="content-layer container mx-auto px-4 relative z-10">
           {/* Terminal-style title */}
           <div className="text-center mb-16 relative">
@@ -160,10 +164,14 @@ const Contact = () => {
                 GIAN LUCA CARAVONE
               </div>
               <div className="text-cyan-400 text-lg md:text-xl">
-                <span className="text-green-500">{">"}</span> F(&{"{"} FULL STACK WEB DEVELOPER & QA ENGINEER {"}"})
+                <span className="text-green-500">{">"}</span> F(&{"{"} FULL
+                STACK WEB DEVELOPER & QA ENGINEER {"}"})
               </div>
               <div className="text-yellow-400 mt-4">
-                STATUS: <span className="bg-green-500 text-black px-3 py-1 rounded font-bold">ONLINE</span>
+                STATUS:{" "}
+                <span className="bg-green-500 text-black px-3 py-1 rounded font-bold">
+                  ONLINE
+                </span>
               </div>
             </div>
           </div>
@@ -179,28 +187,38 @@ const Contact = () => {
               <div className="grid gap-6 md:gap-8 mb-8">
                 <div className="border-l-4 border-green-500 pl-4">
                   <div className="text-cyan-400 font-bold text-lg">NAME:</div>
-                  <div className="text-green-300 text-lg">Gian Luca Caravone</div>
+                  <div className="text-green-300 text-lg">
+                    Gian Luca Caravone
+                  </div>
                 </div>
 
                 <div className="border-l-4 border-blue-500 pl-4">
                   <div className="text-cyan-400 font-bold text-lg">PHONE:</div>
-                  <div className="text-green-300 text-lg">(+54) 341 214 9033</div>
+                  <div className="text-green-300 text-lg">
+                    (+54) 341 214 9033
+                  </div>
                 </div>
 
                 <div className="border-l-4 border-purple-500 pl-4">
                   <div className="text-cyan-400 font-bold text-lg">EMAIL:</div>
-                  <div className="text-green-300 text-lg break-words">gianlucacaravone55@gmail.com</div>
+                  <div className="text-green-300 text-lg break-words">
+                    gianlucacaravone55@gmail.com
+                  </div>
                 </div>
 
                 <div className="border-l-4 border-red-500 pl-4">
-                  <div className="text-cyan-400 font-bold text-lg">LOCATION:</div>
+                  <div className="text-cyan-400 font-bold text-lg">
+                    LOCATION:
+                  </div>
                   <div className="text-green-300 text-lg">Argentina</div>
                 </div>
               </div>
 
               {/* Connect With Me Section */}
               <div className="border-t-2 border-green-500 pt-8">
-                <div className="text-cyan-400 font-bold mb-6 text-xl text-center">CONNECT_WITH_ME:</div>
+                <div className="text-cyan-400 font-bold mb-6 text-xl text-center">
+                  CONNECT_WITH_ME:
+                </div>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <a
                     href="https://wa.me/5493412149033"
@@ -228,21 +246,6 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
-            </div>
-
-            {/* Terminal Command Prompt */}
-            <div className="mt-8 bg-gray-800 rounded border-2 border-green-400/50 p-4 font-mono max-w-2xl mx-auto">
-              <div className="text-green-400 flex items-center justify-center">
-                <span className="text-green-500">gian@portfolio:~$</span>
-                <span className="ml-2 animate-pulse">|</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Terminal footer */}
-          <div className="mt-16 text-center text-green-400 text-sm opacity-70">
-            <div className="animate-pulse">
-              developer@portfolio:~$ █
             </div>
           </div>
         </div>
