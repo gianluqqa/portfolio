@@ -121,7 +121,7 @@ const Contact = () => {
       >
         {/* Terminal grid background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-900 to-black opacity-90"></div>
+          <div className="absolute inset-0 bg-black opacity-90"></div>
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -195,7 +195,7 @@ const Contact = () => {
                 <div className="border-l-4 border-blue-500 pl-4">
                   <div className="text-cyan-400 font-bold text-lg">PHONE:</div>
                   <div className="text-green-300 text-lg">
-                    (+54) 341 214 9033
+                    (+54) 9 341 214 9033
                   </div>
                 </div>
 

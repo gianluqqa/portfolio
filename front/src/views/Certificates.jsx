@@ -135,7 +135,7 @@ export default function Certificados() {
       >
         {/* Terminal grid background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-900 to-black opacity-90"></div>
+          <div className="absolute inset-0 bg-black opacity-90"></div>
           <div
             className="absolute inset-0 opacity-10"
             style={{
