@@ -126,7 +126,7 @@ const Presentation = () => {
           <span>LOADING</span>
           <span>{Math.round(loadingProgress)}% COMPLETE</span>
         </div>
-        <div className="w-full bg-gray-800 h-3 rounded-full overflow-hidden border border-green-400">
+        <div className="w-full bg-gray-900 h-3 rounded-full overflow-hidden border border-green-400">
           <motion.div
             className="h-full bg-gradient-to-r from-green-400 via-cyan-400 to-magenta-400 rounded-full"
             style={{
@@ -240,8 +240,8 @@ const Presentation = () => {
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(34, 197, 94, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34, 197, 94, 0.3) 1px, transparent 1px)
+                linear-gradient(rgba(34, 197, 94, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 197, 94, 0.5) 1px, transparent 1px)
               `,
               backgroundSize: "40px 40px",
               animation: "terminal-grid 15s linear infinite",
@@ -260,13 +260,13 @@ const Presentation = () => {
     >
       {/* Terminal grid background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-900 to-black opacity-90"></div>
+        <div className="absolute inset-0 bg-black opacity-90"></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(34, 197, 94, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(34, 197, 94, 0.3) 1px, transparent 1px)
+              linear-gradient(rgba(34, 197, 94, 0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34, 197, 94, 0.5) 1px, transparent 1px)
             `,
             backgroundSize: "40px 40px",
             animation: "terminal-grid 15s linear infinite",
@@ -299,7 +299,7 @@ const Presentation = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-gray-800 rounded border-2 border-green-400/50 p-4 font-mono text-sm">
+              <div className="bg-black rounded border-2 border-green-400/50 p-4 font-mono text-sm">
                 <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500 opacity-70"></div>
@@ -339,7 +339,7 @@ const Presentation = () => {
                   transition={{ duration: 0.8 }}
                 >
                   {/* Terminal window header */}
-                  <div className="bg-gray-700 px-3 py-2 border-b border-gray-600 flex items-center mb-3 rounded-t">
+                  <div className="bg-black px-3 py-2 border-b border-green-400 flex items-center mb-3 rounded-t">
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-red-500 rounded-full opacity-70"></div>
                       <div className="w-2 h-2 bg-yellow-500 rounded-full opacity-70"></div>
@@ -352,7 +352,7 @@ const Presentation = () => {
                     </div>
                   </div>
 
-                  <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-b overflow-hidden bg-gray-800 border-2 border-green-400/50">
+                  <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-b overflow-hidden bg-gray-900 border-2 border-green-400/50">
                     <Image
                       src={photoProfile}
                       alt="Gian Luca Caravone Profile"
@@ -378,7 +378,7 @@ const Presentation = () => {
             <AnimatePresence>
               {showComponents.name && (
                 <motion.div
-                  className="bg-gray-800 rounded border-2 border-cyan-400/50 p-4 md:p-6 text-center"
+                  className="bg-black rounded border-2 border-cyan-400/50 p-4 md:p-6 text-center"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
@@ -403,31 +403,31 @@ const Presentation = () => {
             <AnimatePresence>
               {showComponents.title && (
                 <motion.div
-                  className="bg-gray-800 rounded border-2 border-magenta-400/50 p-4 md:p-6 text-center"
+                  className="bg-black rounded border-2 border-purple-400 p-4 md:p-6 text-center"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <div className="text-magenta-400 text-sm mb-2 opacity-70">
+                  <div className="text-purple-400 text-sm mb-2 opacity-70">
                     ~/profile$ cat title.txt
                   </div>
                   <DecodingText
                     show={showComponents.title}
-                    className="text-sm sm:text-base md:text-lg lg:text-xl font-mono mb-3 md:mb-4 text-magenta-400 drop-shadow-[0_0_8px_currentColor]"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl font-mono mb-3 md:mb-4 text-purple-400 drop-shadow-[0_0_8px_currentColor]"
                   >
                     ＞ FULL STACK WEB DEVELOPER & QA ENGINEER
                   </DecodingText>
 
                   <div className="flex justify-center">
                     <motion.div
-                      className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm font-mono border-yellow-400/50 text-yellow-400 bg-gray-700"
+                      className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm font-mono border-purple-400/50 text-purple-400 bg-black"
                       animate={{ opacity: [1, 0.7, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
                       STATUS: ONLINE
                     </motion.div>
                   </div>
-                  <div className="text-magenta-300 text-xs opacity-60 mt-2">
+                  <div className="text-purple-400 text-xs opacity-60 mt-2">
                     Found 1 item | Size: 0.8KB
                   </div>
                 </motion.div>
@@ -441,7 +441,7 @@ const Presentation = () => {
           <AnimatePresence>
             {showComponents.description && (
               <motion.div
-                className="bg-gray-800 rounded border-2 border-green-400/50 p-4 md:p-6 w-full"
+                className="bg-black rounded border-2 border-green-400/50 p-4 md:p-6 w-full"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -496,17 +496,17 @@ const Presentation = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="relative group cursor-pointer">
-                  <div className="bg-gray-800 rounded border-2 border-cyan-400/50 p-4 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1">
-                    <div className="text-cyan-400 text-sm mb-2 opacity-70">
+                  <div className="bg-black rounded border-2 border-purple-400/50 p-4 hover:border-purple-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1">
+                    <div className="text-purple-400 text-sm mb-2 opacity-70">
                       ~/profile$ ./download_resume
                     </div>
                     <DecodingText
                       show={showComponents.button}
-                      className="text-cyan-400 font-mono font-bold text-sm md:text-base"
+                      className="text-purple-400 font-mono font-bold text-sm md:text-base"
                     >
                       ＞ DOWNLOAD_RESUME.EXE
                     </DecodingText>
-                    <div className="text-cyan-300 text-xs opacity-60 mt-2">
+                    <div className="text-purple-400 text-xs opacity-60 mt-2">
                       [READY] Click to execute
                     </div>
                   </div>
