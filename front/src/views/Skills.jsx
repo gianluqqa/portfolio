@@ -225,7 +225,7 @@ const Skills = () => {
                   >
                     <div
                       className={`
-                      relative bg-gray-800 rounded border-2 ${category.border}
+                      relative bg-black/70 rounded border-2 ${category.border}
                       hover:border-green-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)]
                       transform transition-all duration-300 ease-out
                       hover:scale-105 hover:-translate-y-1
@@ -233,7 +233,7 @@ const Skills = () => {
                     `}
                     >
                       {/* Terminal window header */}
-                      <div className="bg-gray-700 px-2 py-1 border-b border-gray-600 flex items-center">
+                      <div className="bg-black px-2 py-1 border-b border-gray-600 flex items-center">
                         <div className="flex space-x-1">
                           <div className="w-2 h-2 bg-red-500 rounded-full opacity-70"></div>
                           <div className="w-2 h-2 bg-yellow-500 rounded-full opacity-70"></div>

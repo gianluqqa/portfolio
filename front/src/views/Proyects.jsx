@@ -8,78 +8,9 @@ import { motion } from "framer-motion";
 const Projects = () => {
   const canvasRef = useRef(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-
-    const updateCanvasSize = () => {
-      const section = canvas.parentElement;
-      canvas.width = section.offsetWidth;
-      canvas.height = section.offsetHeight;
-    };
-
-    updateCanvasSize();
-
-    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-    const matrixArray = matrix.split("");
-
-    const font_size = 10;
-    const columns = canvas.width / font_size;
-
-    const drops = [];
-    for (let x = 0; x < columns; x++) {
-      drops[x] = 1;
-    }
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#00ff41";
-      ctx.font = font_size + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text =
-          matrixArray[Math.floor(Math.random() * matrixArray.length)];
-        ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-        if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    const interval = setInterval(draw, 35);
-
-    const handleResize = () => {
-      updateCanvasSize();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <div>
       <style>{`
-        .matrix-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          opacity: 0.3;
-          z-index: 1;
-          pointer-events: none;
-        }
-        
         .content-layer {
           position: relative;
           z-index: 2;
@@ -87,12 +18,12 @@ const Projects = () => {
       `}</style>
 
       <section
-        className="relative bg-gray-900 overflow-hidden py-16"
+        className="relative bg-black overflow-hidden py-16"
         id="projects"
       >
         {/* Terminal grid background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black opacity-90"></div>
+          <div className="absolute inset-0 bg-transparent"></div>
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -105,9 +36,6 @@ const Projects = () => {
             }}
           ></div>
         </div>
-
-        {/* Matrix Background */}
-        <canvas ref={canvasRef} className="matrix-bg" />
 
         <div className="content-layer container mx-auto px-4 relative z-10">
           {/* Terminal-style title */}
@@ -141,9 +69,9 @@ const Projects = () => {
                 }}
               >
                 <Link href={`/project/${proyecto.id}`}>
-                  <div className="relative bg-gray-800 rounded border-2 border-green-400/50 hover:border-green-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden">
+                  <div className="relative bg-black/70 rounded border-2 border-green-400/50 hover:border-green-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden">
                     {/* Terminal window header */}
-                    <div className="bg-gray-700 px-3 py-2 border-b border-gray-600 flex items-center">
+                    <div className="bg-black px-3 py-2 border-b border-gray-600 flex items-center">
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-red-500 rounded-full opacity-70"></div>
                         <div className="w-2 h-2 bg-yellow-500 rounded-full opacity-70"></div>

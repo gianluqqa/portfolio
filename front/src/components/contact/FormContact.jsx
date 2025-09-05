@@ -156,7 +156,7 @@ const Contact = () => {
 
           {/* Terminal-style Contact Header */}
           <div className="mb-12 font-mono text-center">
-            <div className="bg-gray-800 rounded border-2 border-green-400/50 p-6 mb-8">
+            <div className="bg-black/80 rounded border-2 border-green-400/50 p-6 mb-8">
               <div className="text-green-400 text-lg mb-2">
                 <span className="text-green-500">user@portfolio:~$</span> whoami
               </div>
@@ -178,7 +178,7 @@ const Contact = () => {
 
           {/* Contact Information Terminal - Centrado */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gray-800 rounded border-2 border-green-400/50 p-6 md:p-8 font-mono">
+            <div className="bg-black/80 rounded border-2 border-green-400/50 p-6 md:p-8 font-mono">
               <div className="text-green-400 text-xl md:text-2xl mb-8 flex items-center justify-center">
                 <span className="text-green-500 mr-2">$</span> cat personal_info
               </div>

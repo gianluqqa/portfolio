@@ -235,7 +235,7 @@ const Presentation = () => {
       <section className="relative min-h-screen w-full overflow-hidden bg-black">
         {/* Terminal grid background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-transparent"></div>
+          <div className="absolute inset-0 bg-black opacity-90"></div>
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -259,7 +259,7 @@ const Presentation = () => {
       id="presentation"
     >
       {/* Terminal grid background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black opacity-90"></div>
         <div
           className="absolute inset-0 opacity-10"
@@ -274,7 +274,7 @@ const Presentation = () => {
         ></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-20">
         {/* Terminal-style title */}
         <div className="text-center mb-16 relative">
           <div className="text-green-400 text-lg mb-4 tracking-wider">
