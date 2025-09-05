@@ -232,10 +232,10 @@ const Presentation = () => {
 
   if (!isLoaded) {
     return (
-      <section className="relative min-h-screen w-full overflow-hidden bg-gray-900">
+      <section className="relative min-h-screen w-full overflow-hidden bg-black">
         {/* Terminal grid background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black opacity-90"></div>
+          <div className="absolute inset-0 bg-transparent"></div>
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -255,7 +255,7 @@ const Presentation = () => {
 
   return (
     <section
-      className="relative bg-gray-900 overflow-hidden py-16"
+      className="relative bg-black overflow-hidden py-16"
       id="presentation"
     >
       {/* Terminal grid background */}
@@ -299,7 +299,7 @@ const Presentation = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-black rounded border-2 border-green-400/50 p-4 font-mono text-sm">
+              <div className="bg-transparent rounded border-2 border-green-400/50 p-4 font-mono text-sm">
                 <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500 opacity-70"></div>
@@ -378,7 +378,7 @@ const Presentation = () => {
             <AnimatePresence>
               {showComponents.name && (
                 <motion.div
-                  className="bg-black rounded border-2 border-cyan-400/50 p-4 md:p-6 text-center"
+                  className="bg-transparent rounded border-2 border-cyan-400/50 p-4 md:p-6 text-center"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
@@ -403,7 +403,7 @@ const Presentation = () => {
             <AnimatePresence>
               {showComponents.title && (
                 <motion.div
-                  className="bg-black rounded border-2 border-purple-400 p-4 md:p-6 text-center"
+                  className="bg-transparent rounded border-2 border-purple-400 p-4 md:p-6 text-center"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
@@ -420,7 +420,7 @@ const Presentation = () => {
 
                   <div className="flex justify-center">
                     <motion.div
-                      className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm font-mono border-purple-400/50 text-purple-400 bg-black"
+                      className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm font-mono border-purple-400/50 text-purple-400 bg-transparent"
                       animate={{ opacity: [1, 0.7, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
@@ -441,7 +441,7 @@ const Presentation = () => {
           <AnimatePresence>
             {showComponents.description && (
               <motion.div
-                className="bg-black rounded border-2 border-green-400/50 p-4 md:p-6 w-full"
+                className="bg-transparent rounded border-2 border-green-400/50 p-4 md:p-6 w-full"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -496,7 +496,7 @@ const Presentation = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="relative group cursor-pointer">
-                  <div className="bg-black rounded border-2 border-purple-400/50 p-4 hover:border-purple-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1">
+                  <div className="bg-transparent rounded border-2 border-purple-400/50 p-4 hover:border-purple-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1">
                     <div className="text-purple-400 text-sm mb-2 opacity-70">
                       ~/profile$ ./download_resume
                     </div>

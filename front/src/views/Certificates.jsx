@@ -183,9 +183,9 @@ export default function Certificados() {
                   ease: "easeOut",
                 }}
               >
-                <div className="relative bg-gray-800 rounded border-2 border-green-400/50 hover:border-green-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden">
+                <div className="relative bg-black/80 rounded border-2 border-green-400/50 hover:border-green-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden">
                   {/* Terminal window header */}
-                  <div className="bg-gray-700 px-3 py-2 border-b border-gray-600 flex items-center">
+                  <div className="bg-black px-3 py-2 border-b border-gray-600 flex items-center">
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-red-500 rounded-full opacity-70"></div>
                       <div className="w-2 h-2 bg-yellow-500 rounded-full opacity-70"></div>
