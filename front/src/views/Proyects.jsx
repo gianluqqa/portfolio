@@ -94,7 +94,7 @@ const Projects = () => {
                       {/* Project title */}
                       <div className="text-center mb-3">
                         <span className="block text-green-300 text-lg font-medium group-hover:text-green-400 transition-colors duration-300">
-                          {proyecto.titulo}
+                          {proyecto.title}
                         </span>
                         <div className="text-green-500 text-xs opacity-50 mt-1">
                           [READY]
@@ -103,7 +103,7 @@ const Projects = () => {
 
                       {/* Project description */}
                       <div className="text-green-400/70 text-sm leading-relaxed flex-1">
-                        {proyecto.descripcion.slice(0, 100)}...
+                        {proyecto.description.slice(0, 100)}...
                       </div>
 
                       {/* Project details */}

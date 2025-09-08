@@ -22,7 +22,7 @@ const Navbar = () => {
     >
       {/* Fondo con opacidad variable */}
       <motion.div
-        className="absolute inset-0 bg-gray-800"
+        className="absolute inset-0 bg-black"
         style={{ opacity: bgOpacity }}
       />
 
@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-full">
           {/* Izquierda: Nombre */}
           <Link href={"/"}>
-            <motion.div className="font-bold text-base sm:text-lg md:text-xl text-green-500">
+            <motion.div className="font-bold text-base sm:text-lg md:text-xl  text-purple-500">
               Gian Luca Caravone
             </motion.div>
           </Link>
@@ -39,7 +39,7 @@ const Navbar = () => {
           {/* Centro: Títulos en desktop / Botón hamburguesa en móvil */}
           <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
             {/* Botón hamburguesa centrado en móvil */}
-            <button className="text-green-500 md:hidden" onClick={toggleMenu}>
+            <button className=" text-purple-500 md:hidden" onClick={toggleMenu}>
               <FaBars size={24} />
             </button>
 
@@ -47,25 +47,25 @@ const Navbar = () => {
             <div className="hidden md:flex space-x-4 lg:space-x-8">
               <motion.a
                 href="#presentation"
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-green-500 hover:text-red-500"
+                className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
               >
                 About Me
               </motion.a>
               <motion.a
                 href="#projects"
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-green-500 hover:text-red-500"
+                className="font-medium text-sm sm:text-base transition-colors duration-300  text-purple-500 hover:text-cyan-400"
               >
                 Projects
               </motion.a>
               <motion.a
                 href="#skills"
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-green-500 hover:text-red-500"
+                className="font-medium text-sm sm:text-base transition-colors duration-300  text-purple-500 hover:text-cyan-400"
               >
                 Skills
               </motion.a>
               <motion.a
                 href="#contact"
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-green-500 hover:text-red-500"
+                className="font-medium text-sm sm:text-base transition-colors duration-300  text-purple-500 hover:text-cyan-400"
               >
                 Contact
               </motion.a>
@@ -73,7 +73,7 @@ const Navbar = () => {
           </div>
 
           {/* Derecha: Redes sociales - Oculto en móvil, visible en desktop */}
-          <div className="hidden md:flex space-x-4 text-green-500">
+          <div className="hidden md:flex space-x-4  text-purple-500">
             <a
               href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/"
               target="_blank"
@@ -110,33 +110,33 @@ const Navbar = () => {
           <div className="flex flex-col space-y-4">
             <a
               href="#about"
-              className="font-medium text-sm transition-colors duration-300 text-green-500 hover:text-red-500"
+              className="font-medium text-sm transition-colors duration-300  text-purple-500 hover:text-cyan-400"
               onClick={() => setMenuOpen(false)}
             >
               About Me
             </a>
             <a
               href="#projects"
-              className="font-medium text-sm transition-colors duration-300 text-green-500 hover:text-red-500"
+              className="font-medium text-sm transition-colors duration-300  text-purple-500 hover:text-cyan-400"
               onClick={() => setMenuOpen(false)}
             >
               Projects
             </a>
             <a
               href="#skills"
-              className="font-medium text-sm transition-colors duration-300 text-green-500 hover:text-red-500"
+              className="font-medium text-sm transition-colors duration-300  text-purple-500 hover:text-cyan-400"
               onClick={() => setMenuOpen(false)}
             >
               Skills
             </a>
             <a
               href="#contact"
-              className="font-medium text-sm transition-colors duration-300 text-green-500 hover:text-red-500"
+              className="font-medium text-sm transition-colors duration-300  text-purple-500 hover:text-cyan-400"
               onClick={() => setMenuOpen(false)}
             >
               Contact
             </a>
-            <div className="flex space-x-4 pt-2 text-green-500">
+            <div className="flex space-x-4 pt-2  text-purple-500">
               <a
                 href="https://linkedin.com/in/tuusuario"
                 target="_blank"

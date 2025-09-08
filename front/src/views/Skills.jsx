@@ -90,14 +90,14 @@ const Skills = () => {
       { name: "Firebase", logo: "/Firebase - logo.png" },
     ],
     testing: [
-      { name: "Postman", logo: "/Postman - logo.png" },
-      { name: "Cypress", logo: "/Cypress - logo.png" },
-      { name: "Thunder Client", logo: "/Thunder Client - logo.png" },
-      { name: "Selenium", logo: "/Selenium - logo.png" },
-      { name: "Manual Testing", logo: "/Testing - logo.png" },
-      { name: "Automated Testing", logo: "/Testing - logo.png" },
-      { name: "Jest", logo: "/Jest - logo.png" },
-      { name: "React Testing Library", logo: "/RTL - logo.png" },
+      { name: "Postman", logo: "/postman-icon.webp" },
+      { name: "Cypress", logo: "/cypress-logo.webp" },
+      { name: "Thunder Client", logo: "/thunder-client.png" },
+      { name: "Selenium", logo: "/selenium.png" },
+      { name: "Manual Testing", logo: "/manual-testing.png" },
+      { name: "Automated Testing", logo: "/automated-testing.png" },
+      { name: "Jest", logo: "/jest-icon.png" },
+      { name: "React Testing Library", logo: "/octopus-testing.png" },
     ],
   };
 
