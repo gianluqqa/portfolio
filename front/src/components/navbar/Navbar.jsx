@@ -1,7 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FaLinkedin, FaGithub, FaWhatsapp, FaBars, FaArrowLeft } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaWhatsapp,
+  FaBars,
+  FaArrowLeft,
+} from "react-icons/fa";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -36,16 +42,24 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{ height: navHeight }}
     >
-      <motion.div className="absolute inset-0 bg-black" style={{ opacity: bgOpacity }} />
+      <motion.div
+        className="absolute inset-0 bg-black"
+        style={{ opacity: bgOpacity }}
+      />
       <div className="container mx-auto px-4 sm:px-6 md:px-10 h-full relative">
         <div className="flex justify-between items-center h-full">
           <div className="flex items-center space-x-3">
-            <button
-              onClick={handleGoBack}
-              className="text-purple-500 hover:text-cyan-400 transition-colors duration-300"
-            >
-              <FaArrowLeft size={18} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
-            </button>
+            {pathname !== "/" && (
+              <button
+                onClick={handleGoBack}
+                className="text-purple-500 hover:text-cyan-400 transition-colors duration-300"
+              >
+                <FaArrowLeft
+                  size={18}
+                  className="sm:w-4 sm:h-4 md:w-5 md:h-5"
+                />
+              </button>
+            )}
             <Link href={"/"}>
               <motion.div className="font-bold text-base sm:text-lg md:text-xl text-purple-500">
                 Gian Luca Caravone
@@ -86,13 +100,25 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex space-x-4 text-purple-500">
-            <a href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaLinkedin size={18} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
             </a>
-            <a href="https://wa.me/5493412149033" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5493412149033"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaWhatsapp size={18} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
             </a>
-            <a href="https://github.com/gianluqqa" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/gianluqqa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaGithub size={18} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
             </a>
           </div>
@@ -104,7 +130,7 @@ const Navbar = () => {
       </div>
 
       {menuOpen && (
-        <div className="bg-gray-800 w-full py-4 px-6 md:hidden">
+        <div className="bg-black w-full py-4 px-6 md:hidden">
           <div className="flex flex-col space-y-4">
             <button
               className="font-medium text-sm transition-colors duration-300 text-purple-500 hover:text-cyan-400"

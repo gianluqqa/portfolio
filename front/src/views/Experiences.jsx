@@ -17,7 +17,7 @@ const experiences = [
       "Performed functional validation and usability testing on implemented mockups, identifying inconsistencies and proposing improvements that optimized user experience prior to final integration.",
       "Executed systematic manual QA tasks, acting as an end-user to ensure a smooth, accessible, and reliable product experience, contributing to the overall quality of the final delivery.",
     ],
-    color: "purple",
+    color: "cyan",
     icon: "Front-End/Testing",
   },
   {
@@ -73,6 +73,13 @@ const Experiences = () => {
         accent: "text-purple-300",
         shadow: "hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]",
       },
+      cyan: {
+        border: "border-cyan-400/50",
+        hoverBorder: "hover:border-cyan-400",
+        text: "text-cyan-400",
+        accent: "text-cyan-300",
+        shadow: "hover:shadow-[0_0_15px_rgba(6,182,212,0.3)]",
+      }
     };
     return colors[color] || colors.green;
   };

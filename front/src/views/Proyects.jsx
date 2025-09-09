@@ -58,7 +58,7 @@ const Projects = () => {
             {projects.map((proyecto, index) => (
               <motion.div
                 key={proyecto.id}
-                className="group cursor-pointer"
+                className="group"
                 initial={{ opacity: 0, y: 30, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: false }}
@@ -68,64 +68,69 @@ const Projects = () => {
                   ease: "easeOut",
                 }}
               >
-                <Link href={`/project/${proyecto.id}`}>
-                  <div className="relative bg-black/70 rounded border-2 border-green-400/50 hover:border-green-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden">
-                    {/* Terminal window header */}
-                    <div className="bg-black px-3 py-2 border-b border-gray-600 flex items-center">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-red-500 rounded-full opacity-70"></div>
-                        <div className="w-2 h-2 bg-yellow-500 rounded-full opacity-70"></div>
-                        <div className="w-2 h-2 bg-green-500 rounded-full opacity-70 group-hover:animate-pulse"></div>
-                      </div>
-                      <div className="flex-1 text-center">
-                        <span className="text-green-400 text-xs opacity-70">
-                          project_{proyecto.id.toString().padStart(3, "0")}.exe
-                        </span>
-                      </div>
+                <div className="relative bg-black/70 rounded border-2 border-green-400/50 hover:border-green-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden">
+                  {/* Terminal window header */}
+                  <div className="bg-black px-3 py-2 border-b border-gray-600 flex items-center">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-red-500 rounded-full opacity-70"></div>
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full opacity-70"></div>
+                      <div className="w-2 h-2 bg-green-500 rounded-full opacity-70 group-hover:animate-pulse"></div>
                     </div>
-
-                    {/* Content area */}
-                    <div className="p-4 min-h-[150px] flex flex-col">
-                      {/* Terminal prompt */}
-                      <div className="text-green-400 text-xs mb-3 opacity-60">
-                        $ ./run_project
-                      </div>
-
-                      {/* Project title */}
-                      <div className="text-center mb-3">
-                        <span className="block text-green-300 text-lg font-medium group-hover:text-green-400 transition-colors duration-300">
-                          {proyecto.title}
-                        </span>
-                        <div className="text-green-500 text-xs opacity-50 mt-1">
-                          [READY]
-                        </div>
-                      </div>
-
-                      {/* Project description */}
-                      <div className="text-green-400/70 text-sm leading-relaxed flex-1">
-                        {proyecto.description.slice(0, 100)}...
-                      </div>
-
-                      {/* Project details */}
-                      <div className="text-xs text-green-400/60 mt-3 space-y-1">
-                        <div>ID: {proyecto.id.toString().padStart(3, "0")}</div>
-                        <div>Status: ACTIVE</div>
-                      </div>
-                    </div>
-
-                    {/* Scan line effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="h-0.5 w-full bg-green-400 animate-pulse absolute top-1/2 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
-                    </div>
-
-                    {/* Terminal cursor blink */}
-                    <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100">
-                      <span className="text-green-400 text-xs animate-pulse">
-                        _
+                    <div className="flex-1 text-center">
+                      <span className="text-green-400 text-xs opacity-70">
+                        project_{proyecto.id.toString().padStart(3, "0")}.exe
                       </span>
                     </div>
                   </div>
-                </Link>
+
+                  {/* Content area */}
+                  <div className="p-4 min-h-[150px] flex flex-col">
+                    {/* Terminal prompt */}
+                    <div className="text-green-400 text-xs mb-3 opacity-60">
+                      $ ./run_project
+                    </div>
+
+                    {/* Project title */}
+                    <div className="text-center mb-3">
+                      <span className="block text-green-300 text-lg font-medium group-hover:text-green-400 transition-colors duration-300">
+                        {proyecto.title}
+                      </span>
+                      <div className="text-green-500 text-xs opacity-50 mt-1">
+                        [READY]
+                      </div>
+                    </div>
+
+                    {/* Project description */}
+                    <div className="text-green-400/70 text-sm leading-relaxed flex-1 mb-4">
+                      {proyecto.description.slice(0, 100)}...
+                    </div>
+
+                    {/* View Project Button */}
+                    <Link href={`/project/${proyecto.id}`} className="mt-auto">
+                      <button className="w-full bg-purple-500/20 border border-purple-400/50 hover:bg-purple-500/30 hover:border-purple-400 text-purple-400 hover:text-purple-300 px-4 py-2 rounded-sm font-bold text-sm transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_rgba(168,85,247,0.4)] transform uppercase tracking-wider">
+                        ＞ VIEW_PROJECT.EXE
+                      </button>
+                    </Link>
+
+                    {/* Project details */}
+                    <div className="text-xs text-green-400/60 mt-3 space-y-1">
+                      <div>ID: {proyecto.id.toString().padStart(3, "0")}</div>
+                      <div>Status: ACTIVE</div>
+                    </div>
+                  </div>
+
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="h-0.5 w-full bg-green-400 animate-pulse absolute top-1/2 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
+                  </div>
+
+                  {/* Terminal cursor blink */}
+                  <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 pointer-events-none">
+                    <span className="text-green-400 text-xs animate-pulse">
+                      _
+                    </span>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

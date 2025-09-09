@@ -116,7 +116,7 @@ const Contact = () => {
       `}</style>
 
       <section
-        className="relative bg-gray-900 overflow-hidden py-16"
+        className="relative bg-gray-900 overflow-hidden py-8 sm:py-12 md:py-16"
         id="contact"
       >
         {/* Terminal grid background */}
@@ -138,38 +138,38 @@ const Contact = () => {
         {/* Matrix Background - Solo en esta section */}
         <canvas ref={canvasRef} className="matrix-bg" />
 
-        <div className="content-layer container mx-auto px-4 relative z-10">
+        <div className="content-layer container mx-auto px-2 sm:px-4 relative z-10">
           {/* Terminal-style title */}
-          <div className="text-center mb-16 relative">
-            <div className="text-green-400 text-lg mb-4 tracking-wider">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16 relative">
+            <div className="text-green-400 text-xs sm:text-sm md:text-lg mb-2 sm:mb-4 tracking-wider px-2">
               ~/portfolio/developer$ cat contact.txt
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold relative px-2">
               <span className="text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.5)] animate-pulse">
                 CONTACT.EXE
               </span>
             </h2>
-            <div className="mt-4 text-green-300 text-sm tracking-wider">
+            <div className="mt-2 sm:mt-4 text-green-300 text-xs sm:text-sm tracking-wider px-2">
               [████████████████████████] 100% LOADED
             </div>
           </div>
 
           {/* Terminal-style Contact Header */}
-          <div className="mb-12 font-mono text-center">
-            <div className="bg-black/80 rounded border-2 border-green-400/50 p-6 mb-8">
-              <div className="text-green-400 text-lg mb-2">
+          <div className="mb-8 sm:mb-12 text-center">
+            <div className="bg-black/80 rounded border-2 border-green-400/50 p-3 sm:p-4 md:p-6 mb-6 sm:mb-8 mx-2 sm:mx-0">
+              <div className="text-green-400 text-sm sm:text-base md:text-lg mb-2">
                 <span className="text-green-500">user@portfolio:~$</span> whoami
               </div>
-              <div className="text-green-300 text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glitch neon-text">
+              <div className="text-green-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-4 glitch neon-text break-words">
                 GIAN LUCA CARAVONE
               </div>
-              <div className="text-cyan-400 text-lg md:text-xl">
+              <div className="text-cyan-400 text-sm sm:text-base md:text-lg lg:text-xl break-words">
                 <span className="text-green-500">{">"}</span> F(&{"{"} FULL
                 STACK WEB DEVELOPER & QA ENGINEER {"}"})
               </div>
-              <div className="text-yellow-400 mt-4">
+              <div className="text-yellow-400 mt-2 sm:mt-4 text-sm sm:text-base">
                 STATUS:{" "}
-                <span className="bg-green-500 text-black px-3 py-1 rounded font-bold">
+                <span className="bg-green-500 text-black px-2 sm:px-3 py-1 rounded font-bold text-xs sm:text-sm">
                   ONLINE
                 </span>
               </div>
@@ -177,54 +177,54 @@ const Contact = () => {
           </div>
 
           {/* Contact Information Terminal - Centrado */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-black/80 rounded border-2 border-green-400/50 p-6 md:p-8 font-mono">
-              <div className="text-green-400 text-xl md:text-2xl mb-8 flex items-center justify-center">
+          <div className="max-w-4xl mx-auto px-2 sm:px-0">
+            <div className="bg-black/80 rounded border-2 border-green-400/50 p-3 sm:p-4 md:p-6 lg:p-8">
+              <div className="text-green-400 text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 flex items-center justify-center break-words">
                 <span className="text-green-500 mr-2">$</span> cat personal_info
               </div>
 
               {/* Personal Info Grid */}
-              <div className="grid gap-6 md:gap-8 mb-8">
-                <div className="border-l-4 border-green-500 pl-4">
-                  <div className="text-cyan-400 font-bold text-lg">NAME:</div>
-                  <div className="text-green-300 text-lg">
+              <div className="grid gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
+                <div className="border-l-4 border-green-500 pl-3 sm:pl-4">
+                  <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">NAME:</div>
+                  <div className="text-green-300 text-sm sm:text-base md:text-lg break-words">
                     Gian Luca Caravone
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <div className="text-cyan-400 font-bold text-lg">PHONE:</div>
-                  <div className="text-green-300 text-lg">
+                <div className="border-l-4 border-blue-500 pl-3 sm:pl-4">
+                  <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">PHONE:</div>
+                  <div className="text-green-300 text-sm sm:text-base md:text-lg break-words">
                     (+54) 9 341 214 9033
                   </div>
                 </div>
 
-                <div className="border-l-4 border-purple-500 pl-4">
-                  <div className="text-cyan-400 font-bold text-lg">EMAIL:</div>
-                  <div className="text-green-300 text-lg break-words">
+                <div className="border-l-4 border-purple-500 pl-3 sm:pl-4">
+                  <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">EMAIL:</div>
+                  <div className="text-green-300 text-sm sm:text-base md:text-lg break-words">
                     gianlucacaravone55@gmail.com
                   </div>
                 </div>
 
-                <div className="border-l-4 border-red-500 pl-4">
-                  <div className="text-cyan-400 font-bold text-lg">
+                <div className="border-l-4 border-red-500 pl-3 sm:pl-4">
+                  <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">
                     LOCATION:
                   </div>
-                  <div className="text-green-300 text-lg">Argentina</div>
+                  <div className="text-green-300 text-sm sm:text-base md:text-lg">Argentina</div>
                 </div>
               </div>
 
               {/* Connect With Me Section */}
-              <div className="border-t-2 border-green-500 pt-8">
-                <div className="text-cyan-400 font-bold mb-6 text-xl text-center">
+              <div className="border-t-2 border-green-500 pt-6 sm:pt-8">
+                <div className="text-cyan-400 font-bold mb-4 sm:mb-6 text-base sm:text-lg md:text-xl text-center">
                   CONNECT_WITH_ME:
                 </div>
-                <div className="flex flex-wrap gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <a
                     href="https://wa.me/5493412149033"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-green-500 hover:bg-green-400 text-black px-6 py-3 rounded cyber-button flex-1 min-w-32 text-center sm:flex-none"
+                    className="w-full bg-green-500/20 border border-green-400/50 hover:bg-green-500/30 hover:border-green-400 text-green-400 hover:text-green-300 px-4 py-2 rounded-sm font-bold text-sm transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_rgba(34,197,94,0.4)] transform uppercase tracking-wider text-center"
                   >
                     WHATSAPP
                   </a>
@@ -232,7 +232,7 @@ const Contact = () => {
                     href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-blue-500 hover:bg-blue-400 text-black px-6 py-3 rounded cyber-button flex-1 min-w-32 text-center sm:flex-none"
+                    className="w-full bg-blue-500/20 border border-blue-400/50 hover:bg-blue-500/30 hover:border-blue-400 text-blue-400 hover:text-blue-300 px-4 py-2 rounded-sm font-bold text-sm transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transform uppercase tracking-wider text-center"
                   >
                     LINKEDIN
                   </a>
@@ -240,7 +240,7 @@ const Contact = () => {
                     href="https://github.com/gianluqqa"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-purple-500 hover:bg-purple-400 text-black px-6 py-3 rounded cyber-button flex-1 min-w-32 text-center sm:flex-none"
+                    className="w-full bg-purple-500/20 border border-purple-400/50 hover:bg-purple-500/30 hover:border-purple-400 text-purple-400 hover:text-purple-300 px-4 py-2 rounded-sm font-bold text-sm transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_rgba(168,85,247,0.4)] transform uppercase tracking-wider text-center"
                   >
                     GITHUB
                   </a>

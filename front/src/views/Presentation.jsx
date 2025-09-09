@@ -81,7 +81,7 @@ const Presentation = () => {
     <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
       {/* ASCII Art Logo */}
       <motion.div
-        className="text-center font-mono text-green-400 text-xl md:text-2xl"
+        className="text-center text-green-400 text-xl md:text-2xl"
         style={{ textShadow: "0 0 20px #00ff41" }}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -95,7 +95,7 @@ const Presentation = () => {
 
       {/* Loading Messages */}
       <motion.div
-        className="space-y-2 text-center font-mono text-cyan-400"
+        className="space-y-2 text-center text-cyan-400"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
@@ -122,7 +122,7 @@ const Presentation = () => {
 
       {/* Progress Bar */}
       <div className="w-80 max-w-sm">
-        <div className="flex justify-between text-sm font-mono text-green-400 mb-2">
+        <div className="flex justify-between text-sm text-green-400 mb-2">
           <span>LOADING</span>
           <span>{Math.round(loadingProgress)}% COMPLETE</span>
         </div>
@@ -140,7 +140,7 @@ const Presentation = () => {
 
       {/* Blinking cursor */}
       <motion.div
-        className="text-green-400 text-xl font-mono"
+        className="text-green-400 text-xl"
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.8, repeat: Infinity }}
       >
@@ -299,7 +299,7 @@ const Presentation = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-transparent rounded border-2 border-green-400/50 p-4 font-mono text-sm">
+              <div className="bg-transparent rounded border-2 border-green-400/50 p-4 text-sm">
                 <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500 opacity-70"></div>
@@ -388,7 +388,7 @@ const Presentation = () => {
                   </div>
                   <DecodingText
                     show={showComponents.name}
-                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-mono font-bold mb-2 md:mb-4 text-cyan-400 drop-shadow-[0_0_8px_currentColor]"
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 text-cyan-400 drop-shadow-[0_0_8px_currentColor]"
                   >
                     GIAN LUCA CARAVONE
                   </DecodingText>
@@ -413,14 +413,14 @@ const Presentation = () => {
                   </div>
                   <DecodingText
                     show={showComponents.title}
-                    className="text-sm sm:text-base md:text-lg lg:text-xl font-mono mb-3 md:mb-4 text-purple-400 drop-shadow-[0_0_8px_currentColor]"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl mb-3 md:mb-4 text-purple-400 drop-shadow-[0_0_8px_currentColor]"
                   >
                     ＞ FULL STACK WEB DEVELOPER & QA ENGINEER
                   </DecodingText>
 
                   <div className="flex justify-center">
                     <motion.div
-                      className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm font-mono border-purple-400/50 text-purple-400 bg-transparent"
+                      className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm border-purple-400/50 text-purple-400 bg-transparent"
                       animate={{ opacity: [1, 0.7, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
@@ -449,7 +449,7 @@ const Presentation = () => {
                 <div className="text-green-400 text-sm mb-3 opacity-70">
                   ~/profile$ cat description.txt
                 </div>
-                <div className="space-y-1 md:space-y-2 text-green-400 font-mono text-xs sm:text-sm leading-relaxed">
+                <div className="space-y-1 md:space-y-2 text-green-400 text-xs sm:text-sm leading-relaxed">
                   {[
                     "█ Full Stack Web Developer and QA Engineer with experience",
                     "█ in designing, developing, and validating complete web apps.",
@@ -508,7 +508,7 @@ const Presentation = () => {
                       </div>
                       <DecodingText
                         show={showComponents.button}
-                        className="text-cyan-400 font-mono font-bold text-sm md:text-base"
+                        className="text-cyan-400 font-bold text-sm md:text-base"
                       >
                         ＞ VIEW_RESUME.EXE
                       </DecodingText>
@@ -536,7 +536,7 @@ const Presentation = () => {
                       </div>
                       <DecodingText
                         show={showComponents.button}
-                        className="text-purple-500 font-mono font-bold text-sm md:text-base"
+                        className="text-purple-500 font-bold text-sm md:text-base"
                       >
                         ＞ DOWNLOAD_RESUME.EXE
                       </DecodingText>
