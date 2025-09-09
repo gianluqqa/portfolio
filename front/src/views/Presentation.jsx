@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const photoProfile = "/Foto de perfil.jpg";
+const photoProfile = "/profile-photo.jpg";
 
 const Presentation = () => {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
