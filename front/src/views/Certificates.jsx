@@ -99,7 +99,7 @@ export default function Certificados() {
     }
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "#00ff41";
@@ -110,7 +110,7 @@ export default function Certificados() {
           matrixArray[Math.floor(Math.random() * matrixArray.length)];
         ctx.fillText(text, i * font_size, drops[i] * font_size);
 
-        if (drops[i] * font_size > canvas.height && Math.random() > 0.985) {
+        if (drops[i] * font_size > canvas.height && Math.random() > 0.99) {
           drops[i] = 0;
         }
         drops[i]++;
@@ -120,7 +120,7 @@ export default function Certificados() {
     let interval;
     
     if (isInView) {
-      interval = setInterval(draw, 50);
+      interval = setInterval(draw, 80);
     }
 
     const handleCanvasResize = () => {
@@ -161,6 +161,7 @@ export default function Certificados() {
         ref={sectionRef}
         className="relative bg-gray-900 overflow-hidden py-16"
         id="certificates"
+        style={{ zIndex: 5 }}
       >
         {/* Terminal grid background */}
         <div className="absolute inset-0">
@@ -173,7 +174,6 @@ export default function Certificados() {
                 linear-gradient(90deg, rgba(34, 197, 94, 0.3) 1px, transparent 1px)
               `,
               backgroundSize: "40px 40px",
-              animation: "terminal-grid 15s linear infinite",
             }}
           ></div>
         </div>
@@ -203,12 +203,12 @@ export default function Certificados() {
               <motion.div
                 key={cert.id}
                 className="group cursor-pointer"
-                initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{
-                  duration: 0.8,
-                  delay: index * 0.15,
+                  duration: 0.6,
+                  delay: index * 0.1,
                   ease: "easeOut",
                 }}
               >
@@ -283,16 +283,6 @@ export default function Certificados() {
           </div>
         </div>
 
-        <style jsx>{`
-          @keyframes terminal-grid {
-            0% {
-              transform: translate(0, 0);
-            }
-            100% {
-              transform: translate(40px, 40px);
-            }
-          }
-        `}</style>
       </section>
     </div>
   );

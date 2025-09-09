@@ -74,12 +74,12 @@ const Presentation = ({ onLoadingComplete }) => {
       });
 
       // Notify parent component when loading is complete
-      // Wait for all animations to finish (button appears last at 3200ms + 500ms buffer)
+      // Wait for all animations to finish (button appears last at 3200ms + 300ms buffer)
       setTimeout(() => {
         if (onLoadingComplete) {
           onLoadingComplete();
         }
-      }, 3700);
+      }, 3500);
     }
   }, [isLoaded, onLoadingComplete]);
 
@@ -250,7 +250,6 @@ const Presentation = ({ onLoadingComplete }) => {
                 linear-gradient(90deg, rgba(34, 197, 94, 0.5) 1px, transparent 1px)
               `,
               backgroundSize: "40px 40px",
-              animation: "terminal-grid 15s linear infinite",
             }}
           ></div>
         </div>
@@ -263,6 +262,7 @@ const Presentation = ({ onLoadingComplete }) => {
     <section
       className="relative bg-black overflow-hidden py-16"
       id="presentation"
+      style={{ zIndex: 10 }}
     >
       {/* Terminal grid background */}
       <div className="absolute inset-0 z-0">
@@ -275,7 +275,6 @@ const Presentation = ({ onLoadingComplete }) => {
               linear-gradient(90deg, rgba(34, 197, 94, 0.5) 1px, transparent 1px)
             `,
             backgroundSize: "40px 40px",
-            animation: "terminal-grid 15s linear infinite",
           }}
         ></div>
       </div>
@@ -558,16 +557,6 @@ const Presentation = ({ onLoadingComplete }) => {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes terminal-grid {
-          0% {
-            transform: translate(0, 0);
-          }
-          100% {
-            transform: translate(40px, 40px);
-          }
-        }
-      `}</style>
     </section>
   );
 };

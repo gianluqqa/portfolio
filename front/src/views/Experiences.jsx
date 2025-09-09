@@ -127,7 +127,6 @@ const Experiences = () => {
                 linear-gradient(90deg, rgba(34, 197, 94, 0.5) 1px, transparent 1px)
               `,
               backgroundSize: "40px 40px",
-              animation: "terminal-grid 15s linear infinite",
             }}
           ></div>
         </div>
@@ -326,16 +325,6 @@ const Experiences = () => {
           </div>
         </div>
 
-        <style jsx>{`
-          @keyframes terminal-grid {
-            0% {
-              transform: translate(0, 0);
-            }
-            100% {
-              transform: translate(40px, 40px);
-            }
-          }
-        `}</style>
       </section>
     </div>
   );
