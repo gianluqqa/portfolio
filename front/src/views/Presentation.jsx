@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Presentation = () => {
+const Presentation = ({ onLoadingComplete }) => {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [currentTime, setCurrentTime] = useState("");
   const [loadingProgress, setLoadingProgress] = useState(0);
@@ -72,8 +72,16 @@ const Presentation = () => {
           setShowComponents((prev) => ({ ...prev, [key]: true }));
         }, delay);
       });
+
+      // Notify parent component when loading is complete
+      // Wait for all animations to finish (button appears last at 3200ms + 500ms buffer)
+      setTimeout(() => {
+        if (onLoadingComplete) {
+          onLoadingComplete();
+        }
+      }, 3700);
     }
-  }, [isLoaded]);
+  }, [isLoaded, onLoadingComplete]);
 
   const LoadingScreen = () => (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
@@ -352,7 +360,7 @@ const Presentation = () => {
 
                   <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-b overflow-hidden bg-gray-900 border-2 border-green-400/50">
                     <Image
-                      src="/photoProfile.jpg"
+                      src="/profile-photo.jpg"
                       alt="Gian Luca Caravone Profile"
                       fill
                       style={{ objectFit: "cover" }}

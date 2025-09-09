@@ -36,7 +36,9 @@ const certificates = [
 
 export default function Certificados() {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [isInView, setIsInView] = useState(false);
   const canvasRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,6 +51,26 @@ export default function Certificados() {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Intersection Observer to control animation when in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -77,7 +99,7 @@ export default function Certificados() {
     }
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "#00ff41";
@@ -88,14 +110,18 @@ export default function Certificados() {
           matrixArray[Math.floor(Math.random() * matrixArray.length)];
         ctx.fillText(text, i * font_size, drops[i] * font_size);
 
-        if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
+        if (drops[i] * font_size > canvas.height && Math.random() > 0.985) {
           drops[i] = 0;
         }
         drops[i]++;
       }
     }
 
-    const interval = setInterval(draw, 35);
+    let interval;
+    
+    if (isInView) {
+      interval = setInterval(draw, 50);
+    }
 
     const handleCanvasResize = () => {
       updateCanvasSize();
@@ -104,10 +130,12 @@ export default function Certificados() {
     window.addEventListener("resize", handleCanvasResize);
 
     return () => {
-      clearInterval(interval);
+      if (interval) {
+        clearInterval(interval);
+      }
       window.removeEventListener("resize", handleCanvasResize);
     };
-  }, []);
+  }, [isInView]);
 
   return (
     <div>
@@ -130,6 +158,7 @@ export default function Certificados() {
       `}</style>
 
       <section
+        ref={sectionRef}
         className="relative bg-gray-900 overflow-hidden py-16"
         id="certificates"
       >
@@ -176,10 +205,10 @@ export default function Certificados() {
                 className="group cursor-pointer"
                 initial={{ opacity: 0, y: 30, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: false }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{
-                  duration: 0.6,
-                  delay: index * 0.2,
+                  duration: 0.8,
+                  delay: index * 0.15,
                   ease: "easeOut",
                 }}
               >
