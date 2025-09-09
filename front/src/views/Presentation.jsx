@@ -489,29 +489,64 @@ const Presentation = () => {
         <div className="mt-6 md:mt-8 order-4">
           <AnimatePresence>
             {showComponents.button && (
-              <motion.div
-                className="flex justify-center"
-                initial={{ opacity: 0, scale: 0.8, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <div className="relative group cursor-pointer">
-                  <div className="bg-transparent rounded border-2 border-purple-400/50 p-4 hover:border-purple-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1">
-                    <div className="text-purple-400 text-sm mb-2 opacity-70">
-                      ~/profile$ ./download_resume
+              <div className="flex flex-col md:flex-row gap-6 justify-center">
+                {/* View CV */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <a
+                    href="/Cv-GianLucaCaravone-En.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative group cursor-pointer"
+                  >
+                    <div className="bg-transparent rounded border-2 border-cyan-400/50 p-4 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1">
+                      <div className="text-cyan-400 text-sm mb-2 opacity-70">
+                        ~/profile$ ./view_resume
+                      </div>
+                      <DecodingText
+                        show={showComponents.button}
+                        className="text-cyan-400 font-mono font-bold text-sm md:text-base"
+                      >
+                        ＞ VIEW_RESUME.EXE
+                      </DecodingText>
+                      <div className="text-cyan-400 text-xs opacity-60 mt-2">
+                        [READY] Click to execute
+                      </div>
                     </div>
-                    <DecodingText
-                      show={showComponents.button}
-                      className="text-purple-400 font-mono font-bold text-sm md:text-base"
-                    >
-                      ＞ DOWNLOAD_RESUME.EXE
-                    </DecodingText>
-                    <div className="text-purple-400 text-xs opacity-60 mt-2">
-                      [READY] Click to execute
+                  </a>
+                </motion.div>
+
+                {/* Download CV */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <a
+                    href="/Cv-GianLucaCaravone-En.pdf"
+                    download="CV-GianLucaCaravone.pdf"
+                    className="relative group cursor-pointer"
+                  >
+                    <div className="bg-transparent rounded border-2 border-purple-500/50 p-4 hover:border-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1">
+                      <div className="text-purple-500 text-sm mb-2 opacity-70">
+                        ~/profile$ ./download_resume
+                      </div>
+                      <DecodingText
+                        show={showComponents.button}
+                        className="text-purple-500 font-mono font-bold text-sm md:text-base"
+                      >
+                        ＞ DOWNLOAD_RESUME.EXE
+                      </DecodingText>
+                      <div className="text-purple-500 text-xs opacity-60 mt-2">
+                        [READY] Click to execute
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
+                  </a>
+                </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </div>
