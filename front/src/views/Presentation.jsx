@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const photoProfile = "/profile-photo.jpg";
-
 const Presentation = () => {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [currentTime, setCurrentTime] = useState("");
@@ -354,7 +352,7 @@ const Presentation = () => {
 
                   <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-b overflow-hidden bg-gray-900 border-2 border-green-400/50">
                     <Image
-                      src={photoProfile}
+                      src="/photoProfile.jpg"
                       alt="Gian Luca Caravone Profile"
                       fill
                       style={{ objectFit: "cover" }}
