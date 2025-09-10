@@ -184,7 +184,13 @@ export default function Certificados() {
 
         <div className="content-layer container mx-auto px-4 relative z-10">
           {/* Terminal-style title */}
-          <div className="text-center mb-16 relative">
+          <motion.div 
+            className="text-center mb-16 relative"
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="text-green-400 text-lg mb-4 tracking-wider">
               ~/portfolio/developer$ cat certificates.txt
             </div>
@@ -196,7 +202,7 @@ export default function Certificados() {
             <div className="mt-4 text-green-300 text-sm tracking-wider">
               [████████████████████████] 100% LOADED
             </div>
-          </div>
+          </motion.div>
 
           {/* Certificates grid - terminal windows */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
@@ -206,7 +212,7 @@ export default function Certificados() {
                 className="group cursor-pointer"
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: false, margin: "-50px" }}
                 transition={{
                   duration: 0.6,
                   delay: index * 0.1,

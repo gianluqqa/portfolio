@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const canvasRef = useRef(null);
@@ -140,7 +141,13 @@ const Contact = () => {
 
         <div className="content-layer container mx-auto px-2 sm:px-4 relative z-10">
           {/* Terminal-style title */}
-          <div className="text-center mb-8 sm:mb-12 md:mb-16 relative">
+          <motion.div 
+            className="text-center mb-8 sm:mb-12 md:mb-16 relative"
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="text-green-400 text-xs sm:text-sm md:text-lg mb-2 sm:mb-4 tracking-wider px-2">
               ~/portfolio/developer$ cat contact.txt
             </div>
@@ -152,10 +159,16 @@ const Contact = () => {
             <div className="mt-2 sm:mt-4 text-green-300 text-xs sm:text-sm tracking-wider px-2">
               [████████████████████████] 100% LOADED
             </div>
-          </div>
+          </motion.div>
 
           {/* Terminal-style Contact Header */}
-          <div className="mb-8 sm:mb-12 text-center">
+          <motion.div 
+            className="mb-8 sm:mb-12 text-center"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <div className="bg-black/80 rounded border-2 border-green-400/50 p-3 sm:p-4 md:p-6 mb-6 sm:mb-8 mx-2 sm:mx-0">
               <div className="text-green-400 text-sm sm:text-base md:text-lg mb-2">
                 <span className="text-green-500">user@portfolio:~$</span> whoami
@@ -174,10 +187,16 @@ const Contact = () => {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Information Terminal - Centrado */}
-          <div className="max-w-4xl mx-auto px-2 sm:px-0">
+          <motion.div 
+            className="max-w-4xl mx-auto px-2 sm:px-0"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             <div className="bg-black/80 rounded border-2 border-green-400/50 p-3 sm:p-4 md:p-6 lg:p-8">
               <div className="text-green-400 text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 flex items-center justify-center break-words">
                 <span className="text-green-500 mr-2">$</span> cat personal_info
@@ -185,69 +204,111 @@ const Contact = () => {
 
               {/* Personal Info Grid */}
               <div className="grid gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
-                <div className="border-l-4 border-green-500 pl-3 sm:pl-4">
+                <motion.div 
+                  className="border-l-4 border-green-500 pl-3 sm:pl-4"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
                   <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">NAME:</div>
                   <div className="text-green-300 text-sm sm:text-base md:text-lg break-words">
                     Gian Luca Caravone
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="border-l-4 border-blue-500 pl-3 sm:pl-4">
+                <motion.div 
+                  className="border-l-4 border-blue-500 pl-3 sm:pl-4"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                >
                   <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">PHONE:</div>
                   <div className="text-green-300 text-sm sm:text-base md:text-lg break-words">
                     (+54) 9 341 214 9033
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="border-l-4 border-purple-500 pl-3 sm:pl-4">
+                <motion.div 
+                  className="border-l-4 border-purple-500 pl-3 sm:pl-4"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
                   <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">EMAIL:</div>
                   <div className="text-green-300 text-sm sm:text-base md:text-lg break-words">
                     gianlucacaravone55@gmail.com
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="border-l-4 border-red-500 pl-3 sm:pl-4">
+                <motion.div 
+                  className="border-l-4 border-red-500 pl-3 sm:pl-4"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.9 }}
+                >
                   <div className="text-cyan-400 font-bold text-sm sm:text-base md:text-lg">
                     LOCATION:
                   </div>
                   <div className="text-green-300 text-sm sm:text-base md:text-lg">Argentina</div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Connect With Me Section */}
-              <div className="border-t-2 border-green-500 pt-6 sm:pt-8">
+              <motion.div 
+                className="border-t-2 border-green-500 pt-6 sm:pt-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+              >
                 <div className="text-cyan-400 font-bold mb-4 sm:mb-6 text-base sm:text-lg md:text-xl text-center">
                   CONNECT_WITH_ME:
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                  <a
+                  <motion.a
                     href="https://wa.me/5493412149033"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-green-500/20 border border-green-400/50 hover:bg-green-500/30 hover:border-green-400 text-green-400 hover:text-green-300 px-4 py-2 rounded-sm font-bold text-sm transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_rgba(34,197,94,0.4)] transform uppercase tracking-wider text-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.1 }}
                   >
                     WHATSAPP
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     href="https://www.linkedin.com/in/gian-luca-caravone-06463333a/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-blue-500/20 border border-blue-400/50 hover:bg-blue-500/30 hover:border-blue-400 text-blue-400 hover:text-blue-300 px-4 py-2 rounded-sm font-bold text-sm transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transform uppercase tracking-wider text-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.2 }}
                   >
                     LINKEDIN
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     href="https://github.com/gianluqqa"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-purple-500/20 border border-purple-400/50 hover:bg-purple-500/30 hover:border-purple-400 text-purple-400 hover:text-purple-300 px-4 py-2 rounded-sm font-bold text-sm transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_rgba(168,85,247,0.4)] transform uppercase tracking-wider text-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.3 }}
                   >
                     GITHUB
-                  </a>
+                  </motion.a>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <style jsx>{`
