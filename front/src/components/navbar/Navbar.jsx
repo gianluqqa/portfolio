@@ -24,18 +24,13 @@ const Navbar = () => {
 
   const handleGoBack = () => router.back();
 
-  // Función para navegar a sección
   const navigateToSection = (sectionId) => {
-    if (pathname === "/") {
-      // Si estás en Home, scroll directo
-      const section = document.getElementById(sectionId);
-      if (section) section.scrollIntoView({ behavior: "smooth" });
-    } else {
-      // Si no estás en Home, vas a Home con hash
-      router.push(`/#${sectionId}`);
-    }
-    setMenuOpen(false); // cerrar menú en móvil
+    const section = document.getElementById(sectionId);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
   };
+
+  const isHomePage = pathname === "/";
 
   return (
     <motion.nav
@@ -49,7 +44,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 md:px-10 h-full relative">
         <div className="flex justify-between items-center h-full">
           <div className="flex items-center space-x-3">
-            {pathname !== "/" && (
+            {!isHomePage && (
               <button
                 onClick={handleGoBack}
                 className="text-purple-500 hover:text-cyan-400 transition-colors duration-300"
@@ -67,37 +62,51 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
-            <button className=" text-purple-500 md:hidden" onClick={toggleMenu}>
-              <FaBars size={24} />
-            </button>
-            <div className="hidden md:flex space-x-4 lg:space-x-8">
-              <button
-                onClick={() => navigateToSection("presentation")}
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
-              >
-                About Me
+          {isHomePage && (
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
+              <button className="text-purple-500 md:hidden" onClick={toggleMenu}>
+                <FaBars size={24} />
               </button>
-              <button
-                onClick={() => navigateToSection("projects")}
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => navigateToSection("skills")}
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
-              >
-                Skills
-              </button>
-              <button
-                onClick={() => navigateToSection("contact")}
-                className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
-              >
-                Contact
-              </button>
+              <div className="hidden md:flex space-x-4 lg:space-x-8">
+                <button
+                  onClick={() => navigateToSection("presentation")}
+                  className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+                >
+                  About Me
+                </button>
+                <button
+                  onClick={() => navigateToSection("certificates")}
+                  className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+                >
+                  Certificates
+                </button>
+                <button
+                  onClick={() => navigateToSection("experiences")}
+                  className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+                >
+                  Experience
+                </button>
+                <button
+                  onClick={() => navigateToSection("skills")}
+                  className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+                >
+                  Skills
+                </button>
+                <button
+                  onClick={() => navigateToSection("projects")}
+                  className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+                >
+                  Projects
+                </button>
+                <button
+                  onClick={() => navigateToSection("contact")}
+                  className="font-medium text-sm sm:text-base transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+                >
+                  Contact
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="hidden md:flex space-x-4 text-purple-500">
             <a
@@ -123,13 +132,15 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div className="md:hidden invisible">
-            <FaBars size={24} />
-          </div>
+          {isHomePage && (
+            <div className="md:hidden invisible">
+              <FaBars size={24} />
+            </div>
+          )}
         </div>
       </div>
 
-      {menuOpen && (
+      {isHomePage && menuOpen && (
         <div className="bg-black w-full py-4 px-6 md:hidden">
           <div className="flex flex-col space-y-4">
             <button
@@ -140,15 +151,27 @@ const Navbar = () => {
             </button>
             <button
               className="font-medium text-sm transition-colors duration-300 text-purple-500 hover:text-cyan-400"
-              onClick={() => navigateToSection("projects")}
+              onClick={() => navigateToSection("certificates")}
             >
-              Projects
+              Certificates
+            </button>
+            <button
+              className="font-medium text-sm transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+              onClick={() => navigateToSection("experiences")}
+            >
+              Experience
             </button>
             <button
               className="font-medium text-sm transition-colors duration-300 text-purple-500 hover:text-cyan-400"
               onClick={() => navigateToSection("skills")}
             >
               Skills
+            </button>
+            <button
+              className="font-medium text-sm transition-colors duration-300 text-purple-500 hover:text-cyan-400"
+              onClick={() => navigateToSection("projects")}
+            >
+              Projects
             </button>
             <button
               className="font-medium text-sm transition-colors duration-300 text-purple-500 hover:text-cyan-400"

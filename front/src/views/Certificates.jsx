@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 const certificates = [
   {
     id: 1,
-    title: "Desarrollador Web Full Stack",
-    description: "Certificación completa en desarrollo web frontend y backend",
+    title: "Full Stack Web Developer",
+    description: "Complete certification in frontend and backend web development",
     image: "/Certificado de DWFS.jpeg",
     date: "2025",
     category: "DEVELOPMENT",
@@ -16,8 +16,8 @@ const certificates = [
   },
   {
     id: 2,
-    title: "Certificado de Inglés C1 Avanzado",
-    description: "Nivel avanzado de inglés según el Marco Común Europeo",
+    title: "Advanced English C1 Certificate",
+    description: "Advanced English level according to the Common European Framework",
     image: "/Certificado de ingles C1.png",
     date: "2025",
     category: "LANGUAGE",
@@ -25,14 +25,15 @@ const certificates = [
   },
   {
     id: 3,
-    title: "Graduado en Economía",
-    description: "Complejo Educativo Solis",
+    title: "Economics Graduate",
+    description: "Solis Educational Complex",
     image: "/Certificado de graduacion.jpg",
     date: "2019",
     category: "ACADEMIC",
     level: "GRADUATE",
   },
 ];
+
 
 export default function Certificados() {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });

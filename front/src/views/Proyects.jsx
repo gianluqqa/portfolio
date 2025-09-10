@@ -25,11 +25,11 @@ const Projects = () => {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-transparent"></div>
           <div
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-15"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(34, 197, 94, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34, 197, 94, 0.3) 1px, transparent 1px)
+                linear-gradient(rgba(34, 197, 94, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 197, 94, 0.4) 1px, transparent 1px)
               `,
               backgroundSize: "40px 40px",
             }}
@@ -134,7 +134,6 @@ const Projects = () => {
             ))}
           </div>
         </div>
-
       </section>
     </div>
   );

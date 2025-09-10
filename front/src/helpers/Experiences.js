@@ -29,7 +29,7 @@ const experiences = [
       position: "QA Engineer",
       location: "Argentina",
       period: "Apr 2025 – Jul 2025",
-      type: "Project",
+      type: "",
       images: [
         "/Luxora1.png",
         "/Luxora2.png",

@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import experiences from "@/helpers/Experiences";
 
-
 const Experiences = () => {
   const canvasRef = useRef(null);
   const [expandedCards, setExpandedCards] = useState({});
@@ -31,7 +30,7 @@ const Experiences = () => {
         text: "text-cyan-400",
         accent: "text-cyan-300",
         shadow: "hover:shadow-[0_0_15px_rgba(6,182,212,0.3)]",
-      }
+      },
     };
     return colors[color] || colors.green;
   };
@@ -97,31 +96,11 @@ const Experiences = () => {
             <div className="mt-4 text-green-300 text-sm tracking-wider">
               [████████████████████████] 100% LOADED
             </div>
-            
+
             {/* Documentation Buttons */}
             <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="/FinTrack-QADocumentation.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative group cursor-pointer"
-              >
-                <motion.div
-                  className="group bg-transparent rounded border-2 border-purple-500/50 hover:border-purple-500 text-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-6 py-3 font-mono text-sm tracking-wider"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div>
-                    <span>FinTrack QA Documentation</span>
-                  </div>
-                  <div className="text-xs text-purple-400/60 mt-1">
-                    [CLICK TO ACCESS]
-                  </div>
-                </motion.div>
-              </a>
-
-              <a
-                href="/IAraLabs-QADocumentation.pdf"
+                href="/iara-labs-qa-documentation.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group cursor-pointer"
@@ -135,6 +114,25 @@ const Experiences = () => {
                     <span>IAra Labs QA Documentation</span>
                   </div>
                   <div className="text-xs text-cyan-300/60 mt-1">
+                    [CLICK TO ACCESS]
+                  </div>
+                </motion.div>
+              </a>
+              <a
+                href="/fintrack-qa-documentation.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group cursor-pointer"
+              >
+                <motion.div
+                  className="group bg-transparent rounded border-2 border-purple-500/50 hover:border-purple-500 text-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-6 py-3 font-mono text-sm tracking-wider"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div>
+                    <span>FinTrack QA Documentation</span>
+                  </div>
+                  <div className="text-xs text-purple-400/60 mt-1">
                     [CLICK TO ACCESS]
                   </div>
                 </motion.div>
@@ -319,7 +317,6 @@ const Experiences = () => {
             </div>
           </div>
         </div>
-
       </section>
     </div>
   );

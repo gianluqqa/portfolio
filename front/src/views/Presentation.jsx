@@ -74,7 +74,6 @@ const Presentation = ({ onLoadingComplete }) => {
       });
 
       // Notify parent component when loading is complete
-      // Wait for all animations to finish (button appears last at 3200ms + 300ms buffer)
       setTimeout(() => {
         if (onLoadingComplete) {
           onLoadingComplete();
@@ -110,11 +109,7 @@ const Presentation = ({ onLoadingComplete }) => {
           <span className="text-magenta-400">SYSTEM:</span>
           <span>Loading developer profile...</span>
         </div>
-        <motion.div
-          className="text-yellow-400"
-          animate={{ opacity: [1, 0.5, 1] }}
-          transition={{ duration: 1, repeat: Infinity }}
-        >
+        <div className="text-yellow-400">
           {loadingProgress < 30 && "► Initializing neural networks..."}
           {loadingProgress >= 30 &&
             loadingProgress < 60 &&
@@ -123,7 +118,7 @@ const Presentation = ({ onLoadingComplete }) => {
             loadingProgress < 90 &&
             "► Compiling experience data..."}
           {loadingProgress >= 90 && "► Profile ready for deployment..."}
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Progress Bar */}
@@ -143,98 +138,8 @@ const Presentation = ({ onLoadingComplete }) => {
           />
         </div>
       </div>
-
-      {/* Blinking cursor */}
-      <motion.div
-        className="text-green-400 text-xl"
-        animate={{ opacity: [1, 0] }}
-        transition={{ duration: 0.8, repeat: Infinity }}
-      >
-        █
-      </motion.div>
     </div>
   );
-
-  const DecodingText = ({
-    children,
-    show,
-    delay = 0,
-    className = "",
-    style = {},
-  }) => {
-    const [displayText, setDisplayText] = useState("");
-    const [isDecoding, setIsDecoding] = useState(false);
-    const [hasStarted, setHasStarted] = useState(false);
-    const text = typeof children === "string" ? children : "";
-
-    useEffect(() => {
-      if (!show || !text || hasStarted) return;
-
-      setHasStarted(true);
-      const chars =
-        "!@#$%^&*()_+-=[]{}|;:,.<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-      const startDecoding = () => {
-        setIsDecoding(true);
-        let currentIndex = 0;
-
-        const interval = setInterval(() => {
-          if (currentIndex <= text.length) {
-            const decoded = text.slice(0, currentIndex);
-            const remaining = text.slice(currentIndex);
-
-            // Scramble only the next few characters that are being "decoded"
-            const scrambleLength = Math.min(3, remaining.length);
-            const scrambled = remaining
-              .slice(0, scrambleLength)
-              .split("")
-              .map(() => chars[Math.floor(Math.random() * chars.length)])
-              .join("");
-
-            const unprocessed = remaining.slice(scrambleLength);
-            setDisplayText(decoded + scrambled + unprocessed);
-
-            currentIndex++;
-
-            // When fully decoded, set final text and stop
-            if (currentIndex > text.length) {
-              setDisplayText(text);
-              setIsDecoding(false);
-              clearInterval(interval);
-            }
-          }
-        }, 120);
-      };
-
-      if (delay > 0) {
-        setTimeout(startDecoding, delay);
-      } else {
-        startDecoding();
-      }
-    }, [show, text, delay, hasStarted]);
-
-    if (!show) return null;
-
-    // If hasn't started yet, show empty
-    if (!hasStarted) {
-      return <div className={className} style={style}></div>;
-    }
-
-    return (
-      <div className={className} style={style}>
-        {typeof children === "string" ? displayText || text : children}
-        {isDecoding && (
-          <motion.span
-            className="text-cyan-400"
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.5, repeat: Infinity }}
-          >
-            █
-          </motion.span>
-        )}
-      </div>
-    );
-  };
 
   if (!isLoaded) {
     return (
@@ -286,7 +191,7 @@ const Presentation = ({ onLoadingComplete }) => {
             ~/portfolio/developer$ cat profile.txt
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold relative">
-            <span className="text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.5)] animate-pulse">
+            <span className="text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.5)]">
               PROFILE.EXE
             </span>
           </h2>
@@ -311,22 +216,11 @@ const Presentation = ({ onLoadingComplete }) => {
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-yellow-500 opacity-70"></div>
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-500 opacity-70"></div>
                   </div>
-                  <DecodingText
-                    show={showComponents.header}
-                    className="text-green-400 text-sm"
-                  >
+                  <div className="text-green-400 text-sm">
                     ~/portfolio/developer$ cat profile.txt
-                  </DecodingText>
+                  </div>
                   <div className="text-cyan-400 text-sm">{currentTime}</div>
                 </div>
-                <DecodingText
-                  show={showComponents.header}
-                  className="text-green-400 text-sm"
-                  delay={500}
-                >
-                  <span className="text-magenta-400">SYSTEM:</span> Profile
-                  loaded successfully ✓
-                </DecodingText>
               </div>
             </motion.div>
           )}
@@ -366,11 +260,6 @@ const Presentation = ({ onLoadingComplete }) => {
                       priority
                       className="filter contrast-110 brightness-110"
                     />
-
-                    {/* Scan line effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="h-0.5 w-full bg-green-400 animate-pulse absolute top-1/2 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
-                    </div>
                   </div>
                 </motion.div>
               )}
@@ -391,12 +280,9 @@ const Presentation = ({ onLoadingComplete }) => {
                   <div className="text-cyan-400 text-sm mb-2 opacity-70">
                     ~/profile$ cat name.txt
                   </div>
-                  <DecodingText
-                    show={showComponents.name}
-                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 text-cyan-400 drop-shadow-[0_0_8px_currentColor]"
-                  >
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 text-cyan-400 drop-shadow-[0_0_8px_currentColor]">
                     GIAN LUCA CARAVONE
-                  </DecodingText>
+                  </div>
                   <div className="text-cyan-300 text-xs opacity-60">
                     Found 1 item | Size: 1.2KB
                   </div>
@@ -416,21 +302,14 @@ const Presentation = ({ onLoadingComplete }) => {
                   <div className="text-purple-400 text-sm mb-2 opacity-70">
                     ~/profile$ cat title.txt
                   </div>
-                  <DecodingText
-                    show={showComponents.title}
-                    className="text-sm sm:text-base md:text-lg lg:text-xl mb-3 md:mb-4 text-purple-400 drop-shadow-[0_0_8px_currentColor]"
-                  >
+                  <div className="text-sm sm:text-base md:text-lg lg:text-xl mb-3 md:mb-4 text-purple-400 drop-shadow-[0_0_8px_currentColor]">
                     ＞ FULL STACK WEB DEVELOPER & QA ENGINEER
-                  </DecodingText>
+                  </div>
 
                   <div className="flex justify-center">
-                    <motion.div
-                      className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm border-purple-400/50 text-purple-400 bg-transparent"
-                      animate={{ opacity: [1, 0.7, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
+                    <div className="px-3 py-1 md:px-4 md:py-1 border rounded-full text-xs md:text-sm border-purple-400/50 text-purple-400 bg-transparent">
                       STATUS: ONLINE
-                    </motion.div>
+                    </div>
                   </div>
                   <div className="text-purple-400 text-xs opacity-60 mt-2">
                     Found 1 item | Size: 0.8KB
@@ -455,32 +334,46 @@ const Presentation = ({ onLoadingComplete }) => {
                   ~/profile$ cat description.txt
                 </div>
                 <div className="space-y-1 md:space-y-2 text-green-400 text-xs sm:text-sm leading-relaxed">
-                  {[
-                    "█ Full Stack Web Developer and QA Engineer with experience",
-                    "█ in designing, developing, and validating complete web apps.",
-                    "█ Skilled in React, Next.js, Node.js, Express, PostgreSQL,",
-                    "█ and MongoDB, creating scalable and responsive interfaces.",
-                    "",
-                    "█ In QA, I practice manual and automated testing using",
-                    "█ Selenium, Cypress, and Postman, validating APIs and",
-                    "█ databases with detailed bug reporting. My development",
-                    "█ background enhances my analytical approach to error",
-                    "█ detection and resolution.",
-                    "",
-                    "█ I thrive in agile environments (Scrum), contributing with",
-                    "█ clear communication and collaborative teamwork. I stand",
-                    "█ out for my proactive mindset, adaptability, and focus on",
-                    "█ quality, ensuring project success and scalability.",
-                  ].map((line, index) => (
-                    <DecodingText
-                      key={index}
-                      show={showComponents.description}
-                      delay={index * 150}
-                      className="block"
-                    >
-                      {line === "" ? "\u00A0" : line}
-                    </DecodingText>
-                  ))}
+                  <div>
+                    █ Full Stack Web Developer and QA Engineer with experience
+                  </div>
+                  <div>
+                    █ in designing, developing, and validating complete web
+                    apps.
+                  </div>
+                  <div>
+                    █ Skilled in React, Next.js, Node.js, Express, PostgreSQL,
+                  </div>
+                  <div>
+                    █ and MongoDB, creating scalable and responsive interfaces.
+                  </div>
+                  <div>&nbsp;</div>
+                  <div>
+                    █ In QA, I practice manual and automated testing using
+                  </div>
+                  <div>
+                    █ Selenium, Cypress, and Postman, validating APIs and
+                  </div>
+                  <div>
+                    █ databases with detailed bug reporting. My development
+                  </div>
+                  <div>
+                    █ background enhances my analytical approach to error
+                  </div>
+                  <div>█ detection and resolution.</div>
+                  <div>&nbsp;</div>
+                  <div>
+                    █ I thrive in agile environments (Scrum), contributing with
+                  </div>
+                  <div>
+                    █ clear communication and collaborative teamwork. I stand
+                  </div>
+                  <div>
+                    █ out for my proactive mindset, adaptability, and focus on
+                  </div>
+                  <div>
+                    █ quality, ensuring project success and scalability.
+                  </div>
                 </div>
                 <div className="text-green-300 text-xs opacity-60 mt-3">
                   Found 15 items | Size: 2.1KB
@@ -511,12 +404,9 @@ const Presentation = ({ onLoadingComplete }) => {
                       <div className="text-cyan-400 text-sm mb-2 opacity-70">
                         ~/profile$ ./view_resume
                       </div>
-                      <DecodingText
-                        show={showComponents.button}
-                        className="text-cyan-400 font-bold text-sm md:text-base"
-                      >
+                      <div className="text-cyan-400 font-bold text-sm md:text-base">
                         ＞ VIEW_RESUME.EXE
-                      </DecodingText>
+                      </div>
                       <div className="text-cyan-400 text-xs opacity-60 mt-2">
                         [READY] Click to execute
                       </div>
@@ -539,12 +429,9 @@ const Presentation = ({ onLoadingComplete }) => {
                       <div className="text-purple-500 text-sm mb-2 opacity-70">
                         ~/profile$ ./download_resume
                       </div>
-                      <DecodingText
-                        show={showComponents.button}
-                        className="text-purple-500 font-bold text-sm md:text-base"
-                      >
+                      <div className="text-purple-500 font-bold text-sm md:text-base">
                         ＞ DOWNLOAD_RESUME.EXE
-                      </DecodingText>
+                      </div>
                       <div className="text-purple-500 text-xs opacity-60 mt-2">
                         [READY] Click to execute
                       </div>
@@ -556,7 +443,6 @@ const Presentation = ({ onLoadingComplete }) => {
           </AnimatePresence>
         </div>
       </div>
-
     </section>
   );
 };
