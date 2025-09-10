@@ -395,7 +395,7 @@ const Presentation = ({ onLoadingComplete }) => {
                   transition={{ duration: 0.8 }}
                 >
                   <a
-                    href="/Cv-GianLucaCaravone-En.pdf"
+                    href="/cv-gianlucacaravone-en.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative group cursor-pointer"
