@@ -1,0 +1,77 @@
+const experiences = [
+    {
+      id: 1,
+      title: "Marketer AI",
+      position: "Front-End Developer & Manual QA",
+      company: "IAra Labs",
+      location: "Buenos Aires, Argentina",
+      period: "Jul 2025 – Sept 2025",
+      type: "Job (Internship)",
+      images: [
+        "/Luxora1.png",
+        "/Luxora2.png",
+        "/Luxora3.png",
+        "/Luxora4.png",
+        "/Luxora5.png",
+        "/Luxora6.png",
+      ],
+      achievements: [
+        "Designed and developed prototypes and landing pages using React and Tailwind CSS to showcase the personalized marketing agent’s features, ensuring modern, scalable, and product-aligned interfaces.",
+        "Performed functional validation and usability testing on implemented mockups, identifying inconsistencies and proposing improvements that optimized user experience prior to final integration.",
+        "Executed systematic manual QA tasks, acting as an end-user to ensure a smooth, accessible, and reliable product experience, contributing to the overall quality of the final delivery.",
+      ],
+      color: "cyan",
+      icon: "Front-End/Testing",
+    },
+    {
+      id: 2,
+      title: "FinTrack",
+      position: "QA Engineer",
+      location: "Argentina",
+      period: "Apr 2025 – Jul 2025",
+      type: "Project",
+      images: [
+        "/Luxora1.png",
+        "/Luxora2.png",
+        "/Luxora3.png",
+        "/Luxora4.png",
+        "/Luxora5.png",
+        "/Luxora6.png",
+      ],
+      achievements: [
+        "Supported manual and automated testing of key features (registration, transfers, account management, reporting).",
+        "Collaborated with senior QAs in designing functional and regression test cases, gaining hands-on experience in structured workflows.",
+        "Reported bugs in Jira with clear steps and evidence, helping developers reproduce and fix issues faster.",
+        "Participated in Scrum ceremonies, contributing observations from testing sessions and learning Agile best practices.",
+        "Practiced writing test documentation to ensure consistency and track progress across releases.",
+      ],
+      color: "purple",
+      icon: "TESTING",
+    },
+    
+    {
+      id: 3,
+      title: "Luxora – Sophisticated Furniture",
+      position: "Front-End Developer",
+      location: "Rosario, Argentina",
+      period: "Feb 2025 – Apr 2025",
+      type: "Project",
+      images: [
+        "/Luxora1.png",
+        "/Luxora2.png",
+        "/Luxora3.png",
+        "/Luxora4.png",
+        "/Luxora5.png",
+        "/Luxora6.png",
+      ],
+      achievements: [
+        "Designed and developed scalable and responsive interfaces, optimizing performance with a 30% reduction in loading times and enhancing accessibility across multiple devices.",
+        "Integrated Front-End and Back-End with RESTful APIs, ensuring seamless communication, secure responses, and real-time consistency.",
+        "Implemented a user-centered UI/UX approach with reusable components and usability testing, which boosted customer satisfaction and engagement.",
+      ],
+      color: "green",
+      icon: "FULL STACK",
+    },
+  ];
+
+  export default experiences;

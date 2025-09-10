@@ -2,56 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import experiences from "@/helpers/Experiences";
 
-const experiences = [
-  {
-    id: 1,
-    title: "Marketer AI",
-    position: "Front-End Developer & Manual QA",
-    company: "IAra Labs",
-    location: "Buenos Aires, Argentina",
-    period: "Jul 2025 – Sept 2025",
-    type: "Job (Internship)",
-    achievements: [
-      "Designed and developed prototypes and landing pages using React and Tailwind CSS to showcase the personalized marketing agent’s features, ensuring modern, scalable, and product-aligned interfaces.",
-      "Performed functional validation and usability testing on implemented mockups, identifying inconsistencies and proposing improvements that optimized user experience prior to final integration.",
-      "Executed systematic manual QA tasks, acting as an end-user to ensure a smooth, accessible, and reliable product experience, contributing to the overall quality of the final delivery.",
-    ],
-    color: "cyan",
-    icon: "Front-End/Testing",
-  },
-  {
-    id: 2,
-    title: "Luxora – Sophisticated Furniture",
-    position: "Front-End Developer",
-    location: "Rosario, Argentina",
-    period: "Feb 2025 – Apr 2025",
-    type: "Project",
-    achievements: [
-      "Designed and developed scalable and responsive interfaces, optimizing performance with a 30% reduction in loading times and enhancing accessibility across multiple devices.",
-      "Integrated Front-End and Back-End with RESTful APIs, ensuring seamless communication, secure responses, and real-time consistency.",
-      "Implemented a user-centered UI/UX approach with reusable components and usability testing, which boosted customer satisfaction and engagement.",
-    ],
-    color: "green",
-    icon: "FULL STACK",
-  },
-  {
-    id: 3,
-    title: "FinTrack",
-    position: "QA Engineer",
-    location: "Argentina",
-    period: "Apr 2025 – Jul 2025",
-    type: "Project",
-    achievements: [
-      "Executed manual and automated testing on critical features: registration, transfers, account management, and reporting.",
-      "Utilized Postman, Cypress, Selenium, and Jira for API, UI, integration testing, and issue tracking.",
-      "Reported and documented critical bugs, providing test cases and evidence for the development team.",
-      "Participated in Scrum ceremonies and designed functional, regression, and exploratory test suites for each release.",
-    ],
-    color: "purple",
-    icon: "TESTING",
-  },
-];
 
 const Experiences = () => {
   const canvasRef = useRef(null);
@@ -144,6 +96,49 @@ const Experiences = () => {
             </h2>
             <div className="mt-4 text-green-300 text-sm tracking-wider">
               [████████████████████████] 100% LOADED
+            </div>
+            
+            {/* Documentation Buttons */}
+            <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="/FinTrack-QADocumentation.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group cursor-pointer"
+              >
+                <motion.div
+                  className="group bg-transparent rounded border-2 border-purple-500/50 hover:border-purple-500 text-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-6 py-3 font-mono text-sm tracking-wider"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div>
+                    <span>FinTrack QA Documentation</span>
+                  </div>
+                  <div className="text-xs text-purple-400/60 mt-1">
+                    [CLICK TO ACCESS]
+                  </div>
+                </motion.div>
+              </a>
+
+              <a
+                href="/IAraLabs-QADocumentation.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group cursor-pointer"
+              >
+                <motion.div
+                  className="group bg-transparent rounded border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-6 py-3 font-mono text-sm tracking-wider"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div>
+                    <span>IAra Labs QA Documentation</span>
+                  </div>
+                  <div className="text-xs text-cyan-300/60 mt-1">
+                    [CLICK TO ACCESS]
+                  </div>
+                </motion.div>
+              </a>
             </div>
           </div>
 
