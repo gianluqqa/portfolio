@@ -7,6 +7,19 @@ import experiences from "@/helpers/Experiences";
 const Experiences = () => {
   const canvasRef = useRef(null);
   const [expandedCards, setExpandedCards] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar si es dispositivo móvil
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const getColorClasses = (color) => {
     const colors = {
@@ -33,6 +46,35 @@ const Experiences = () => {
       },
     };
     return colors[color] || colors.green;
+  };
+
+  // Función para manejar el toggle en móviles
+  const handleCardClick = (expId) => {
+    if (isMobile) {
+      setExpandedCards((prev) => ({
+        ...prev,
+        [expId]: !prev[expId],
+      }));
+    }
+  };
+
+  // Funciones para desktop (hover)
+  const handleMouseEnter = (expId) => {
+    if (!isMobile) {
+      setExpandedCards((prev) => ({
+        ...prev,
+        [expId]: true,
+      }));
+    }
+  };
+
+  const handleMouseLeave = (expId) => {
+    if (!isMobile) {
+      setExpandedCards((prev) => ({
+        ...prev,
+        [expId]: false,
+      }));
+    }
   };
 
   return (
@@ -187,22 +229,16 @@ const Experiences = () => {
                     `}>
                       <div
                         className="relative"
-                        onMouseEnter={() =>
-                          setExpandedCards((prev) => ({
-                            ...prev,
-                            [exp.id]: true,
-                          }))
-                        }
-                        onMouseLeave={() =>
-                          setExpandedCards((prev) => ({
-                            ...prev,
-                            [exp.id]: false,
-                          }))
-                        }
+                        onMouseEnter={() => handleMouseEnter(exp.id)}
+                        onMouseLeave={() => handleMouseLeave(exp.id)}
+                        onClick={() => handleCardClick(exp.id)}
                       >
                         <motion.div
-                          className={`group bg-transparent rounded border-2 ${colors.border} ${colors.hoverBorder} ${colors.shadow} transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden p-3 md:p-4 cursor-pointer`}
+                          className={`group bg-transparent rounded border-2 ${colors.border} ${colors.hoverBorder} ${colors.shadow} transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden p-3 md:p-4 cursor-pointer ${
+                            isMobile ? 'active:scale-95' : ''
+                          }`}
                           whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                         >
                           {/* Terminal window header */}
                           <div className="bg-black px-2 md:px-3 py-1 md:py-2 border-b border-gray-600 flex items-center mb-3 md:mb-4 rounded-t">
@@ -217,6 +253,12 @@ const Experiences = () => {
                                 .exe
                               </span>
                             </div>
+                            {/* Indicador de estado en móviles */}
+                            {isMobile && (
+                              <div className="text-green-400 text-xs opacity-60">
+                                {expandedCards[exp.id] ? '[-]' : '[+]'}
+                              </div>
+                            )}
                           </div>
 
                           {/* Content area */}
@@ -260,6 +302,8 @@ const Experiences = () => {
                                 </div>
                               </div>
                             </div>
+
+
 
                             {/* Achievements - Smooth height transition */}
                             <motion.div
