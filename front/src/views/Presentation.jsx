@@ -8,6 +8,7 @@ const Presentation = ({ onLoadingComplete }) => {
   const [currentTime, setCurrentTime] = useState("");
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
   const [showComponents, setShowComponents] = useState({
     header: false,
     image: false,
@@ -41,7 +42,9 @@ const Presentation = ({ onLoadingComplete }) => {
       setLoadingProgress((prev) => {
         if (prev >= 100) {
           clearInterval(loadingInterval);
-          setTimeout(() => setIsLoaded(true), 500);
+          // Mostrar título completo por 3 segundos antes de continuar
+          setTimeout(() => setShowTitle(true), 500);
+          setTimeout(() => setIsLoaded(true), 3500); // 3 segundos adicionales
           return 100;
         }
         return prev + Math.random() * 15 + 5;
@@ -84,60 +87,117 @@ const Presentation = ({ onLoadingComplete }) => {
 
   const LoadingScreen = () => (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
-      {/* ASCII Art Logo */}
+      {/* ASCII Art Logo con previa opaca */}
       <motion.div
-        className="text-center text-green-400 text-xl md:text-2xl"
-        style={{ textShadow: "0 0 20px #00ff41" }}
+        className="text-center text-xl md:text-2xl relative"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div>╔══════════════════════════════════╗</div>
-        <div>║ DEVELOPER PROFILE V2.0 ║</div>
-        <div>║ LOADING SYSTEM ║</div>
-        <div>╚══════════════════════════════════╝</div>
+        {/* Previa opaca durante la carga */}
+        <motion.div
+          className="text-green-400 opacity-30"
+          style={{ textShadow: "0 0 10px #00ff41" }}
+          animate={{ opacity: loadingProgress < 100 ? 0.3 : 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div>╔══════════════════════════════════╗</div>
+          <div>║ QA & DEVELOPER PROFILE ║</div>
+          <div>║ LOADING SYSTEM ║</div>
+          <div>╚══════════════════════════════════╝</div>
+        </motion.div>
+
+        {/* Título completo cuando carga termina */}
+        <AnimatePresence>
+          {showTitle && (
+            <motion.div
+              className="absolute inset-0 text-green-400"
+              style={{ textShadow: "0 0 20px #00ff41" }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div>╔══════════════════════════════════╗</div>
+              <div>║ QA & DEVELOPER PROFILE ║</div>
+              <div>║ SYSTEM V2.0 ║</div>
+              <div>╚══════════════════════════════════╝</div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
-      {/* Loading Messages */}
-      <motion.div
-        className="space-y-2 text-center text-cyan-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-      >
-        <div className="flex items-center justify-center gap-2">
-          <span className="text-magenta-400">SYSTEM:</span>
-          <span>Loading developer profile...</span>
-        </div>
-        <div className="text-yellow-400">
-          {loadingProgress < 30 && "► Initializing neural networks..."}
-          {loadingProgress >= 30 &&
-            loadingProgress < 60 &&
-            "► Decrypting skill databases..."}
-          {loadingProgress >= 60 &&
-            loadingProgress < 90 &&
-            "► Compiling experience data..."}
-          {loadingProgress >= 90 && "► Profile ready for deployment..."}
-        </div>
-      </motion.div>
-
-      {/* Progress Bar */}
-      <div className="w-80 max-w-sm">
-        <div className="flex justify-between text-sm text-green-400 mb-2">
-          <span>LOADING</span>
-          <span>{Math.round(loadingProgress)}% COMPLETE</span>
-        </div>
-        <div className="w-full bg-gray-900 h-3 rounded-full overflow-hidden border border-green-400">
+      {/* Loading Messages - solo mostrar durante la carga */}
+      <AnimatePresence>
+        {!showTitle && (
           <motion.div
-            className="h-full bg-gradient-to-r from-green-400 via-cyan-400 to-magenta-400 rounded-full"
-            style={{
-              width: `${Math.min(loadingProgress, 100)}%`,
-              boxShadow: "0 0 20px rgba(0, 255, 65, 0.8)",
-            }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
-      </div>
+            className="space-y-2 text-center text-cyan-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-magenta-400">SYSTEM:</span>
+              <span>Loading developer profile...</span>
+            </div>
+            <div className="text-yellow-400">
+              {loadingProgress < 30 && "► Initializing neural networks..."}
+              {loadingProgress >= 30 &&
+                loadingProgress < 60 &&
+                "► Decrypting skill databases..."}
+              {loadingProgress >= 60 &&
+                loadingProgress < 90 &&
+                "► Compiling experience data..."}
+              {loadingProgress >= 90 && "► Profile ready for deployment..."}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Progress Bar - solo mostrar durante la carga */}
+      <AnimatePresence>
+        {!showTitle && (
+          <motion.div
+            className="w-80 max-w-sm"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex justify-between text-sm text-green-400 mb-2">
+              <span>LOADING</span>
+              <span>{Math.round(loadingProgress)}% COMPLETE</span>
+            </div>
+            <div className="w-full bg-gray-900 h-3 rounded-full overflow-hidden border border-green-400">
+              <motion.div
+                className="h-full bg-gradient-to-r from-green-400 via-cyan-400 to-magenta-400 rounded-full"
+                style={{
+                  width: `${Math.min(loadingProgress, 100)}%`,
+                  boxShadow: "0 0 20px rgba(0, 255, 65, 0.8)",
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mensaje de sistema completado */}
+      <AnimatePresence>
+        {showTitle && (
+          <motion.div
+            className="text-center text-cyan-400 space-y-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-green-400">SYSTEM:</span>
+              <span>Profile loaded successfully</span>
+            </div>
+            <div className="text-green-400">► Ready for deployment ✓</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 

@@ -57,6 +57,14 @@ const Experiences = () => {
           animation: pulse-line 3s ease-in-out infinite;
         }
 
+        /* Mobile timeline line */
+        @media (max-width: 768px) {
+          .roadmap-line {
+            left: 1.5rem;
+            transform: translateX(-50%);
+          }
+        }
+
         @keyframes pulse-line {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.8; }
@@ -85,15 +93,15 @@ const Experiences = () => {
         <div className="content-layer container mx-auto px-4 relative z-10">
           {/* Terminal-style title */}
           <div className="text-center mb-8 relative">
-            <div className="text-green-400 text-lg mb-4 tracking-wider">
+            <div className="text-green-400 text-sm md:text-lg mb-4 tracking-wider">
               ~/portfolio/developer$ cat experience.txt
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold relative">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold relative">
               <span className="text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.5)] animate-pulse">
                 EXPERIENCE.EXE
               </span>
             </h2>
-            <div className="mt-4 text-green-300 text-sm tracking-wider">
+            <div className="mt-4 text-green-300 text-xs md:text-sm tracking-wider">
               [████████████████████████] 100% LOADED
             </div>
 
@@ -106,7 +114,7 @@ const Experiences = () => {
                 className="relative group cursor-pointer"
               >
                 <motion.div
-                  className="group bg-transparent rounded border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-6 py-3 font-mono text-sm tracking-wider"
+                  className="group bg-transparent rounded border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-4 md:px-6 py-3 font-mono text-xs md:text-sm tracking-wider"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -125,7 +133,7 @@ const Experiences = () => {
                 className="relative group cursor-pointer"
               >
                 <motion.div
-                  className="group bg-transparent rounded border-2 border-purple-500/50 hover:border-purple-500 text-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-6 py-3 font-mono text-sm tracking-wider"
+                  className="group bg-transparent rounded border-2 border-purple-500/50 hover:border-purple-500 text-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transform transition-all duration-300 ease-out hover:scale-105 px-4 md:px-6 py-3 font-mono text-xs md:text-sm tracking-wider"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -146,7 +154,7 @@ const Experiences = () => {
             <div className="roadmap-line"></div>
 
             {/* Experience Cards */}
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {experiences.map((exp, index) => {
                 const colors = getColorClasses(exp.color);
                 const isEven = index % 2 === 0;
@@ -155,7 +163,8 @@ const Experiences = () => {
                   <motion.div
                     key={exp.id}
                     className={`relative flex items-center ${
-                      isEven ? "flex-row" : "flex-row-reverse"
+                      // En desktop: alternado, en mobile: siempre flex-row
+                      isEven ? "flex-row" : "md:flex-row-reverse flex-row"
                     }`}
                     initial={{ opacity: 0, x: isEven ? -100 : 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -163,16 +172,19 @@ const Experiences = () => {
                     transition={{ duration: 0.8, delay: index * 0.3 }}
                   >
                     {/* Timeline Node */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10">
                       <div
-                        className={`px-3 py-1 rounded-full border-2 ${colors.border} bg-black flex items-center justify-center text-xs font-mono ${colors.text}`}
+                        className={`px-2 md:px-3 py-1 rounded-full border-2 ${colors.border} bg-black flex items-center justify-center text-xs font-mono ${colors.text}`}
                       >
                         {exp.icon}
                       </div>
                     </div>
 
                     {/* Experience Card */}
-                    <div className={`w-5/12 ${isEven ? "pr-8" : "pl-8"}`}>
+                    <div className={`
+                      w-full pl-16 pr-4 md:w-5/12 md:pl-0 md:pr-0
+                      ${isEven ? "md:pr-8" : "md:pl-8"}
+                    `}>
                       <div
                         className="relative"
                         onMouseEnter={() =>
@@ -189,15 +201,15 @@ const Experiences = () => {
                         }
                       >
                         <motion.div
-                          className={`group bg-transparent rounded border-2 ${colors.border} ${colors.hoverBorder} ${colors.shadow} transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden p-4 cursor-pointer`}
+                          className={`group bg-transparent rounded border-2 ${colors.border} ${colors.hoverBorder} ${colors.shadow} transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 overflow-hidden p-3 md:p-4 cursor-pointer`}
                           whileHover={{ scale: 1.02 }}
                         >
                           {/* Terminal window header */}
-                          <div className="bg-black px-3 py-2 border-b border-gray-600 flex items-center mb-4 rounded-t">
+                          <div className="bg-black px-2 md:px-3 py-1 md:py-2 border-b border-gray-600 flex items-center mb-3 md:mb-4 rounded-t">
                             <div className="flex space-x-1">
-                              <div className="w-2 h-2 bg-red-500 rounded-full opacity-70"></div>
-                              <div className="w-2 h-2 bg-yellow-500 rounded-full opacity-70"></div>
-                              <div className="w-2 h-2 bg-green-500 rounded-full opacity-70"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full opacity-70"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-yellow-500 rounded-full opacity-70"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full opacity-70"></div>
                             </div>
                             <div className="flex-1 text-center">
                               <span className="text-green-400 text-xs opacity-70">
@@ -208,9 +220,9 @@ const Experiences = () => {
                           </div>
 
                           {/* Content area */}
-                          <div className="space-y-3">
+                          <div className="space-y-2 md:space-y-3">
                             {/* Terminal prompt */}
-                            <div className="text-green-400 text-xs mb-3 opacity-60">
+                            <div className="text-green-400 text-xs mb-2 md:mb-3 opacity-60">
                               $ ./view_experience
                             </div>
 
@@ -218,17 +230,17 @@ const Experiences = () => {
                             <div className="space-y-2">
                               <div>
                                 <h3
-                                  className={`text-xl font-bold ${colors.text} mb-1`}
+                                  className={`text-lg md:text-xl font-bold ${colors.text} mb-1`}
                                 >
                                   {exp.title}
                                 </h3>
                                 <h3
-                                  className={`text-md font-bold ${colors.text} mb-1`}
+                                  className={`text-sm md:text-md font-bold ${colors.text} mb-1`}
                                 >
                                   {exp.company}
                                 </h3>
                                 <div
-                                  className={`text-sm ${colors.accent} opacity-80`}
+                                  className={`text-xs md:text-sm ${colors.accent} opacity-80`}
                                 >
                                   {exp.type}
                                 </div>
@@ -236,14 +248,14 @@ const Experiences = () => {
 
                               <div className="space-y-2">
                                 <div
-                                  className={`text-lg font-semibold ${colors.text}`}
+                                  className={`text-md md:text-lg font-semibold ${colors.text}`}
                                 >
                                   {exp.position}
                                 </div>
-                                <div className="text-green-300 text-sm">
+                                <div className="text-green-300 text-xs md:text-sm">
                                   📍 {exp.location}
                                 </div>
-                                <div className="text-green-300 text-sm">
+                                <div className="text-green-300 text-xs md:text-sm">
                                   📅 {exp.period}
                                 </div>
                               </div>
@@ -259,9 +271,9 @@ const Experiences = () => {
                               transition={{ duration: 0.3, ease: "easeInOut" }}
                               className="overflow-hidden"
                             >
-                              <div className="mt-3">
+                              <div className="mt-2 md:mt-3">
                                 <div
-                                  className={`text-sm font-semibold ${colors.text} mb-2`}
+                                  className={`text-xs md:text-sm font-semibold ${colors.text} mb-2`}
                                 >
                                   ACHIEVEMENTS:
                                 </div>
@@ -270,7 +282,7 @@ const Experiences = () => {
                                     (achievement, achIndex) => (
                                       <div
                                         key={achIndex}
-                                        className="text-green-300 text-sm leading-relaxed"
+                                        className="text-green-300 text-xs md:text-sm leading-relaxed"
                                       >
                                         <span className="text-green-400">
                                           ●
@@ -284,7 +296,7 @@ const Experiences = () => {
                             </motion.div>
 
                             {/* Status */}
-                            <div className="mt-3 pt-2 border-t border-gray-600">
+                            <div className="mt-2 md:mt-3 pt-2 border-t border-gray-600">
                               <div className="flex items-center justify-between">
                                 <div className="text-green-500 text-xs opacity-50">
                                   [COMPLETED]
@@ -309,8 +321,8 @@ const Experiences = () => {
             </div>
 
             {/* Timeline End */}
-            <div className="text-center mt-8">
-              <div className="text-green-400 text-sm opacity-60">
+            <div className="text-center mt-6 md:mt-8">
+              <div className="text-green-400 text-xs md:text-sm opacity-60">
                 <span className="animate-pulse">...</span> MORE EXPERIENCES
                 COMING SOON <span className="animate-pulse">...</span>
               </div>
