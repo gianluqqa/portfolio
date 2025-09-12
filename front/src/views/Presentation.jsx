@@ -9,6 +9,7 @@ const Presentation = ({ onLoadingComplete }) => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
+  const [hasLoadedBefore, setHasLoadedBefore] = useState(false);
   const [showComponents, setShowComponents] = useState({
     header: false,
     image: false,
@@ -17,6 +18,32 @@ const Presentation = ({ onLoadingComplete }) => {
     description: false,
     button: false,
   });
+
+  // Verificar si ya se cargó anteriormente
+  useEffect(() => {
+    const loadedBefore = sessionStorage.getItem('presentation-loaded') === 'true';
+    setHasLoadedBefore(loadedBefore);
+    
+    if (loadedBefore) {
+      // Si ya se cargó antes, saltar directamente al contenido
+      setLoadingProgress(100);
+      setShowTitle(true);
+      setIsLoaded(true);
+      setShowComponents({
+        header: true,
+        image: true,
+        name: true,
+        title: true,
+        description: true,
+        button: true,
+      });
+      
+      // Notificar inmediatamente que la carga está completa
+      if (onLoadingComplete) {
+        setTimeout(onLoadingComplete, 100);
+      }
+    }
+  }, [onLoadingComplete]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,30 +64,42 @@ const Presentation = ({ onLoadingComplete }) => {
     window.addEventListener("resize", handleResize);
     const timeInterval = setInterval(updateTime, 1000);
 
-    // Loading simulation
-    const loadingInterval = setInterval(() => {
-      setLoadingProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(loadingInterval);
-          // Mostrar título completo por 3 segundos antes de continuar
-          setTimeout(() => setShowTitle(true), 500);
-          setTimeout(() => setIsLoaded(true), 3500); // 3 segundos adicionales
-          return 100;
-        }
-        return prev + Math.random() * 15 + 5;
-      });
-    }, 150);
+    // Solo ejecutar loading si no se ha cargado antes
+    if (!hasLoadedBefore) {
+      // Loading simulation
+      const loadingInterval = setInterval(() => {
+        setLoadingProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(loadingInterval);
+            // Mostrar título completo por 3 segundos antes de continuar
+            setTimeout(() => setShowTitle(true), 500);
+            setTimeout(() => {
+              setIsLoaded(true);
+              // Marcar como cargado en sessionStorage
+              sessionStorage.setItem('presentation-loaded', 'true');
+            }, 3500); // 3 segundos adicionales
+            return 100;
+          }
+          return prev + Math.random() * 15 + 5;
+        });
+      }, 150);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        clearInterval(timeInterval);
+        clearInterval(loadingInterval);
+      };
+    }
 
     return () => {
       window.removeEventListener("resize", handleResize);
       clearInterval(timeInterval);
-      clearInterval(loadingInterval);
     };
-  }, []);
+  }, [hasLoadedBefore]);
 
   // Progressive component reveal after loading
   useEffect(() => {
-    if (isLoaded) {
+    if (isLoaded && !hasLoadedBefore) {
       const delays = [
         { key: "header", delay: 200 },
         { key: "image", delay: 800 },
@@ -83,7 +122,7 @@ const Presentation = ({ onLoadingComplete }) => {
         }
       }, 3500);
     }
-  }, [isLoaded, onLoadingComplete]);
+  }, [isLoaded, hasLoadedBefore, onLoadingComplete]);
 
   const LoadingScreen = () => (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
@@ -201,7 +240,8 @@ const Presentation = ({ onLoadingComplete }) => {
     </div>
   );
 
-  if (!isLoaded) {
+  // Si ya se cargó antes o está cargado, mostrar contenido principal
+  if (!isLoaded && !hasLoadedBefore) {
     return (
       <section className="relative min-h-screen w-full overflow-hidden bg-black">
         {/* Terminal grid background */}
@@ -265,9 +305,9 @@ const Presentation = ({ onLoadingComplete }) => {
           {showComponents.header && (
             <motion.div
               className="mb-8"
-              initial={{ opacity: 0, y: -20, scale: 0.9 }}
+              initial={{ opacity: hasLoadedBefore ? 1 : 0, y: hasLoadedBefore ? 0 : -20, scale: hasLoadedBefore ? 1 : 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: hasLoadedBefore ? 0 : 0.6 }}
             >
               <div className="bg-transparent rounded border-2 border-green-400/50 p-4 text-sm">
                 <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
@@ -293,9 +333,9 @@ const Presentation = ({ onLoadingComplete }) => {
               {showComponents.image && (
                 <motion.div
                   className="relative"
-                  initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
+                  initial={{ opacity: hasLoadedBefore ? 1 : 0, scale: hasLoadedBefore ? 1 : 0.8, rotateY: hasLoadedBefore ? 0 : 90 }}
                   animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: hasLoadedBefore ? 0 : 0.8 }}
                 >
                   {/* Terminal window header */}
                   <div className="bg-black px-3 py-2 border-b border-green-400 flex items-center mb-3 rounded-t">
@@ -333,9 +373,9 @@ const Presentation = ({ onLoadingComplete }) => {
               {showComponents.name && (
                 <motion.div
                   className="bg-transparent rounded border-2 border-cyan-400/50 p-4 md:p-6 text-center"
-                  initial={{ opacity: 0, x: 50 }}
+                  initial={{ opacity: hasLoadedBefore ? 1 : 0, x: hasLoadedBefore ? 0 : 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: hasLoadedBefore ? 0 : 0.8 }}
                 >
                   <div className="text-cyan-400 text-sm mb-2 opacity-70">
                     ~/profile$ cat name.txt
@@ -355,9 +395,9 @@ const Presentation = ({ onLoadingComplete }) => {
               {showComponents.title && (
                 <motion.div
                   className="bg-transparent rounded border-2 border-purple-400 p-4 md:p-6 text-center"
-                  initial={{ opacity: 0, x: 50 }}
+                  initial={{ opacity: hasLoadedBefore ? 1 : 0, x: hasLoadedBefore ? 0 : 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: hasLoadedBefore ? 0 : 0.8 }}
                 >
                   <div className="text-purple-400 text-sm mb-2 opacity-70">
                     ~/profile$ cat title.txt
@@ -386,9 +426,9 @@ const Presentation = ({ onLoadingComplete }) => {
             {showComponents.description && (
               <motion.div
                 className="bg-transparent rounded border-2 border-green-400/50 p-4 md:p-6 w-full"
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: hasLoadedBefore ? 1 : 0, y: hasLoadedBefore ? 0 : 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: hasLoadedBefore ? 0 : 0.8 }}
               >
                 <div className="text-green-400 text-sm mb-3 opacity-70">
                   ~/profile$ cat description.txt
@@ -450,9 +490,9 @@ const Presentation = ({ onLoadingComplete }) => {
               <div className="flex flex-col md:flex-row gap-6 justify-center">
                 {/* View CV */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                  initial={{ opacity: hasLoadedBefore ? 1 : 0, scale: hasLoadedBefore ? 1 : 0.8, y: hasLoadedBefore ? 0 : 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: hasLoadedBefore ? 0 : 0.8 }}
                 >
                   <a
                     href="/resume-gianlucacaravone.pdf"
@@ -476,9 +516,9 @@ const Presentation = ({ onLoadingComplete }) => {
 
                 {/* Download CV */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                  initial={{ opacity: hasLoadedBefore ? 1 : 0, scale: hasLoadedBefore ? 1 : 0.8, y: hasLoadedBefore ? 0 : 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  transition={{ duration: hasLoadedBefore ? 0 : 0.8, delay: hasLoadedBefore ? 0 : 0.2 }}
                 >
                   <a
                     href="/resume-gianlucacaravone.pdf"
